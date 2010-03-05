@@ -3,7 +3,8 @@ syn match epydocTags "@\(param\|type\|return\|rtype\|keyword\|raise\|ivar\|cvar\
 syn match Note_Comment "#note#.*" containedin=.*Comment
 syn match Todo_Comment "#\(TODO\|todo\)#.*" containedin=.*Comment
 syn match Todo_Comment "@todo:.*" containedin=pythonString
-syn match Debug_Comment "#[a-zA-Z ]*#.*" containedin=.*Comment
+syn match Note_Comment "@note:.*" containedin=pythonString
+syn match Debug_Comment "#[a-zA-Z]*#.*" containedin=.*Comment
 
 syn match PreProc "^#!.*"
 syn region Robodoc start="\"\"\"-" end="-\"\"\"" contains=RoboTag

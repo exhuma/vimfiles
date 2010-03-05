@@ -3,5 +3,6 @@
 " ----------------------------------------------------------------------------
 colorscheme my_inkpot
 map <F2> :colorscheme my_inkpot<CR>:set background=dark<CR>
-set cmdheight=2                  " Use 2 lines for cmd-line
+set cmdheight=2                  " Keep a 2-line command-line
 set mousehide                    " Hide the mouse pointer while typing
+set guifont=Monospace\ 12
