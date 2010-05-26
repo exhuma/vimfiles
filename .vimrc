@@ -50,13 +50,17 @@ if v:version >= 700
    set cursorline
 endif
 
+" Other Settings
+" ----------------------------------------------------------------------------
+set encoding=utf-8
+
 " Indentation settings
 " ----------------------------------------------------------------------------
 set autoindent                   " always set autoindenting on
 set shiftwidth=3                 " Force indentation to be 3 spaces
 set tabstop=3                    "          -- idem --
 set list                         " EOL, trailing spaces, tabs: show them.
-set lcs=tab:→·                   " Tabs are shown as →·
+set lcs=tab:├─                   " Tabs are shown as ├──├──
 set lcs+=trail:▒                 " Trailing spaces are shown as shrouded blocks
 set expandtab                    " always expand tabs to spaces
 
@@ -75,11 +79,8 @@ au! BufWritePost *.py "silent! !ctags *.py"
 set title                        " display title in X.
 set foldcolumn=3                 " display folds
 set nowrap                       " Prevent wrapping
-colorscheme desert               " Select colorscheme
+colorscheme adaryn
 set background=dark
-" Quick switch for color schemes for bright/dark console settings
-nmap <F2> :colorscheme my_inkpot<CR>:set background=dark<CR>
-nmap <F3> :colorscheme chela_light<CR>:set background=light<CR>
 
 
 " UI Tweaks
@@ -98,20 +99,27 @@ set backspace=indent,eol,start   " allow backspacing over everything in insert m
 set history=50                   " keep 50 lines of command line history
 set ruler                        " show the cursor position all the time
 set showcmd                      " display incomplete commands
-nnoremap Q gq                    " Don't use Ex mode, use Q for formatting
 set so=7                         " Keep a 7-lines lookahead when scrolling
 set wildmenu                     " Show auto-complete matches
+nnoremap Q gq                    " Don't use Ex mode, use Q for formatting
 
-"
 " Print Settings
 " ----------------------------------------------------------------------------
 set printoptions=header:3,number:y,left:10mm,right:10mm,top:10mm,bottom:10mm
+
+" Abbreviations
+" ----------------------------------------------------------------------------
+iab miam Michel Albert <michel.albert@statec.etat.lu>
 
 " SVNCommand Settings
 " ----------------------------------------------------------------------------
 let SVNCommandEdit='split'
 let SVNCommandNameResultBuffers=1
 let mapleader=','
+
+"
+" Store viminfo on exit
+set viminfo=%,'50,<100,n~/.viminfo
 
 " EOF... sort of ;)
 " good example at http://www.stack.nl/~wjmb/stuff/dotfiles/vimrc.htm
