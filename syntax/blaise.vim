@@ -28,14 +28,14 @@ syntax keyword blaKey after alien alternative and array ascii asciirelational
                       \ temporaryfile then timetype tlanguage to transit
                       \ trigram type until updatefile uses while
 
-syn region blaComment start=/{/ end=/}/
-syn region blaBlock start=/BLOCK/ end=/ENDBLOCK/ fold contains=blaFields
+syn region blaComment start=/{/ end=/}/ contains=ALL
+syn region blaBlock start=/BLOCK/ end=/ENDBLOCK/ fold contains=blaFields, blaBlock
 syn region blaFields start=/FIELDS/ end=/RULES\|SIGNAL\|CHECK\|ENDMODEL/ fold
 syn match  BlaOperator /[:=<>+\-*/]/
 syn match BlaFunc /\.Search(.*)/
 syn match BlaFunc /\.Read/
 syn keyword BlaFunc SHOW KEEP UPPERCASE SUBSTRING
-syn match StringEscapes !@/\|@[A-Z]\|\^\^\|@@\|@|\|@[A-Z]@!
+syn match StringEscapes !@/\|@[A-Z]\|\^\^\|@@\|@|\|@[A-Z]@\|<\/\=.\{-}>!
 syn match StringEscapes /·/
 syn match StringVars /\^[A-Za-z0-9]\+/
 syn keyword BlaType STRING EMPTY INT INTEGER
