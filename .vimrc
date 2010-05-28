@@ -118,6 +118,14 @@ let SVNCommandNameResultBuffers=1
 let mapleader=','
 
 "
+" NERDTree Settings
+" ----------------------------------------------------------------------------
+let NERDTreeIgnore=['\.bjk$', '\.b[xm]i$', '\.ms[ux]$' , '\.bd[bm]$' ,
+         \ '\.bfi$' , '\.bpk$' , '\.bsk$' , '\.bwm$' , '\.exe$' ,
+         \ '\.exe$' , '\.ico$' , '\.lnk$' , '\.sfv$', '\~$' ]
+let NERDTreeWinSize=40
+
+"
 " Store viminfo on exit
 set viminfo=%,'50,<100,n~/.viminfo
 
