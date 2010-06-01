@@ -85,23 +85,34 @@ set background=dark
 
 " UI Tweaks
 " ----------------------------------------------------------------------------
-" make search results appear in the middle of the screen:
+" make search results appear in the middle of the screen
 nmap n nzz
 nmap N Nzz
 nmap * *zz
 nmap # #zz
 nmap g* g*zz
 nmap g# g#zz
-nmap <kMinus>  :bprevious<CR>    " Switch to previous buffer
-nmap <kPlus>   :bnext<CR>        " Switch to next buffer
+
+" Switch to previous/next buffer
+nmap <kMinus>  :bprevious<CR>
+nmap <kPlus>   :bnext<CR>
+
+" CTRL+S saves the buffer
 nmap <C-s>     :w<CR>
+
+" Jump to the previous/next entry in the quickfix list
+nmap <C-Up>    :cNext<CR>
+nmap <C-Down>  :cnext<CR>
+
 set backspace=indent,eol,start   " allow backspacing over everything in insert mode
 set history=50                   " keep 50 lines of command line history
 set ruler                        " show the cursor position all the time
 set showcmd                      " display incomplete commands
 set so=7                         " Keep a 7-lines lookahead when scrolling
 set wildmenu                     " Show auto-complete matches
-nnoremap Q gq                    " Don't use Ex mode, use Q for formatting
+"
+" Don't use Ex mode, use Q for formatting
+nnoremap Q gq
 
 " Print Settings
 " ----------------------------------------------------------------------------
