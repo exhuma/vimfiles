@@ -1,7 +1,8 @@
 " Vim syntax file
 " Language:	SPSS command files (.sps)
-" Maintainer:	Kent Nassen (knassen@umich.edu)
-" Last change:	1998 April 29
+" Author:	Kent Nassen (knassen@umich.edu)
+" Maintainer:	Michel Albert <michel@albert.lu>
+" Lastchange:	2010 Jun 2
 
 " Remove any old syntax stuff hanging around
 syntax clear
@@ -17,18 +18,18 @@ syntax case ignore
 
 " Main SPSS Commands
 syntax keyword spsKeyword add aggregate alscal anova autorecode begin bmdp break by cas case clear
-syntax keyword spsKeyword cluster compress compressed compute corr correlations count crosstabs
-syntax keyword spsKeyword data define descriptives discriminant display do document documents drop
-syntax keyword spsKeyword edit eject else end examine execute export factor file files finish flip
-syntax keyword spsKeyword formats freq frequencies get graph handle help hiloglinear if import
-syntax keyword spsKeyword info input into keep keyed label labels leave list logistic loglinear
-syntax keyword spsKeyword loop manova map match matrix mconvert means missing mult nlr nonpar npar
-syntax keyword spsKeyword numeric oneway osiris output partical plot point print probit procedure
-syntax keyword spsKeyword program proximities quick rank recode record regression reliability
-syntax keyword spsKeyword rename repeat repeating report reread response restore sample sas save
-syntax keyword spsKeyword scss select set show sort space split string subtitle survival t-test
-syntax keyword spsKeyword temporary tests title to transformations translate type update value
-syntax keyword spsKeyword values var variable variables vars vector weight width write xsave
+       \ cluster compress compressed compute corr correlations count crosstabs
+       \ data define descriptives discriminant display do document documents drop
+       \ edit eject else end examine execute export factor file files finish flip
+       \ formats freq frequencies get graph handle help hiloglinear if import
+       \ info input into keep keyed label labels leave list logistic loglinear
+       \ loop manova map match matrix mconvert means missing mult nlr nonpar npar
+       \ numeric oneway osiris output partical plot point print probit procedure
+       \ program proximities quick rank recode record regression reliability
+       \ rename repeat repeating report reread response restore sample sas save
+       \ scss select set show sort space split string subtitle survival t-test
+       \ temporary tests title to transformations translate type update
+       \ value values var variable variables vars vector weight width write xsave
 
 " SPSS Subcommands (most of them, anyway :)
 syntax keyword spsSubcommands $casenum adevice adjpred aempirical afreq after against
@@ -141,17 +142,18 @@ syntax keyword spsSysVars $casenum $date $jdate $length $sysmis $time $width
 
 " Comments and Strings
 syntax region spsComment          start="/\*"  end="\*\/" contains=NONE
-syntax region spsComment2         start="^\*"  end="\."  contains=NONE
+syntax region spsComment2         start="^\*"  end="\.$"  contains=NONE
 syntax match  spsCommentError     "\*/"
-syntax region  spsString            start=+"+  skip=+\\\\\|\\"+  end=+"+  
+syntax region  spsString            start=+'+  skip=+\\\\\|\\"+  end=+'+
+syntax region  spsString2           start=+"+  skip=+\\\\\|\\'+  end=+"+
 
-syntax keyword spsSysmis	sysmis copy 
+syntax keyword spsSysmis	sysmis copy
 syntax keyword spsLogic		eq ne gt ge lt le yes no not and or inap missing lo lowest hi highest thru
 syntax keyword spsFiles		file handle outfile lrecl records name write import export update
 syntax match spsNofCases	/n of cases/ contains=NONE oneline
 syntax match spsLogic2		"=\<\>\="
-syntax match spsNumber "-\=\<[0-9]\+L\=\>\|\.0[0-9]\+\>"
-syntax match spsNumber2 "[A-Z0-9]*\|[A-Z0-9]*[_\.][A-Z0-9]*\|[_\.]*[A-Z]*[0-9]*[\.]\|_[0-9]*[\.]\|:[0-9]*[\.]\|[0-9]_[0-9]" contains=ALLBUT,spsKeyword
+syntax match spsNumber /[=.-]\?\<[0-9]\+/
+syn match spsIdentifier /\<[a-z][a-z0-9_]*\>/
 
 hi link spsComment Comment
 hi link spsComment2 Comment
@@ -161,17 +163,8 @@ hi link spsKeyword Statement
 hi link spsLogic String
 hi link spsNofCases Statement
 hi link spsNumber Number
-hi link spsNumber2 Number
 hi link spsSubcommands Statement
+hi link spsString String
+hi link spsString2 String
+hi link spsIdentifier Identifier
 
-" Forcing color changes on users via syntax file definitions
-" is now frowned upon.  So...the following have been commented
-" out.  You can reinstate them if you like, or better yet,
-" put them in your .vimrc or set up a .mysyntax file.  See the
-" vim on-line docs for how to do this.
-"hi Comment guifg=PaleGoldenrod
-"hi Number guifg=burlywood
-"hi spsSysmis guifg=LightSkyBlue
-"hi spsLogic2 guifg=LightGoldenrod
-"hi spsString guifg=PowderBlue
-"hi Statement guifg=chartreuse
