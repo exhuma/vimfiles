@@ -26,8 +26,8 @@ nmap <F11> :call BLAISENextTag( "E", "<font color=\"#0000ff\">", "</font>" )<CR>
 nmap <F12> :call BLAISENextTag( "W", "<font color=\"#0000ff\">", "</font>" )<CR>
 
 if has("win16") || has("win32") || has("win64")|| has("win95")
-   map <F5> :w<CR>:!"C:\Program Files\StatNeth\Blaise 4.8 Enterprise\Bin\b4cpars.exe" /A- %<CR>
-   map <F6> :!"C:\Program Files\StatNeth\Blaise 4.8 Enterprise\Bin\dep.exe" %<CR>
+   map <F9> :w<CR>:!"C:\Program Files\StatNeth\Blaise 4.8 Enterprise\Bin\b4cpars.exe" /A- %<CR>
+   map <C-F9> :!"C:\Program Files\StatNeth\Blaise 4.8 Enterprise\Bin\dep.exe" %<CR>
 elseif has("unix")
    " nothing to do...
 endif
