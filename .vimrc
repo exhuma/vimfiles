@@ -135,6 +135,7 @@ let NERDTreeIgnore=['\.bjk$', '\.b[xm]i$', '\.ms[ux]$' , '\.bd[bm]$' ,
          \ '\.bfi$' , '\.bpk$' , '\.bsk$' , '\.bwm$' , '\.exe$' ,
          \ '\.exe$' , '\.ico$' , '\.lnk$' , '\.sfv$', '\~$' ]
 let NERDTreeWinSize=40
+map <C-S-e> :NERDTree<CR>
 
 "
 " Store viminfo on exit
