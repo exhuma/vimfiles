@@ -17,6 +17,7 @@ set foldmethod=indent
 "  - The function only searches the currently active file for existing codes.
 "    If other files are referenced using 'include' statements, uniqueness is
 "    not guaranteed anymore.
+"  - This method will overwrite register "z" to store the cursor location.
 "
 " PARAMETERS:
 "  tag:    The one-letter prefix
