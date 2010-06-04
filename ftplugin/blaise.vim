@@ -43,12 +43,17 @@ fun! BLAISENextTag(tag, prefix, suffix)
    execute "normal i".printf("%s%s%04d%s", a:prefix, a:tag, maxError, a:suffix)."\<ESC>"
 endfun
 
+setlocal makeprg=\"C:\\Program\ Files\\StatNeth\\Blaise\ 4.8\ Enterprise\\bin\\b4cpars.exe\"\ %
+setlocal errorformat=%-Gb4cpars%.exe%.%#,%-GParsing:%.%#,%EError:\ \ \ \ %m,%CFile:\ \ \ \ \ %f,%CLine:\ \ \ \ \ %l,%ZPosition:\ %c
+
 nmap <F11> :call BLAISENextTag( "E", "<font color=\"#0000ff\">", "</font>" )<CR>
 nmap <F12> :call BLAISENextTag( "W", "<font color=\"#ff0000\">", "</font>" )<CR>
 
 if has("win16") || has("win32") || has("win64")|| has("win95")
-   map <F9> :w<CR>:!"C:\Program Files\StatNeth\Blaise 4.8 Enterprise\Bin\b4cpars.exe" /A- %<CR>
+   map <F9> :make<CR>
    map <C-F9> :!"C:\Program Files\StatNeth\Blaise 4.8 Enterprise\Bin\dep.exe" %<CR>
 elseif has("unix")
    " nothing to do...
 endif
+
+
