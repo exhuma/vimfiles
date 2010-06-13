@@ -43,63 +43,103 @@ else
 
 endif " has("autocmd") }}}
 
+"
+" VIM 7 Settings
+" ----------------------------------------------------------------------------
+if v:version >= 700
+   set cursorline
+endif
+
+" Other Settings
+" ----------------------------------------------------------------------------
+set encoding=utf-8
+
 " Indentation settings
 " ----------------------------------------------------------------------------
 set autoindent                   " always set autoindenting on
 set shiftwidth=3                 " Force indentation to be 3 spaces
 set tabstop=3                    "          -- idem --
 set list                         " EOL, trailing spaces, tabs: show them.
-set lcs=tab:>\                   " Tabs are shown as >
-set lcs+=trail:.                 " Trailing spaces are shownas periods
+set lcs=tab:├─                   " Tabs are shown as ├──├──
+set lcs+=trail:▒                 " Trailing spaces are shown as shrouded blocks
 set expandtab                    " always expand tabs to spaces
 
 " Development helpers
 " ----------------------------------------------------------------------------
 set showmatch                    " Show matching braces
-   " for ctrl-P and ctrl-N completion, get things from syntax file
-   autocmd BufEnter * exec('setlocal complete+=k$VIMRUNTIME/syntax/'.&ft.'.vim')
-"Insert LGPL Header
-imap <F1> <C-o>:r ~/.vim/licenses/LGPL.h<CR>
-"Insert GPL Header
-imap <F2> <C-o>:r ~/.vim/licenses/GPL2.h<CR>
-"Insert standard html template
-imap <F5> <C-o>:r ~/.vim/templates/html.tpl<CR>
+" for ctrl-P and ctrl-N completion, get things from syntax file
+autocmd BufEnter * exec('setlocal complete+=k$VIMRUNTIME/syntax/'.&ft.'.vim')
+"autocmd FileType *  execute "setlocal complete+="."k/usr/share/vim/vim62/syntax/".getbufvar("%","current_syntax").".vim"
 "Insert indentation modeline
 imap <F12> # vim: set shiftwidth=3 tabstop=3 expandtab ai:<CR>
+au! BufWritePost *.py "silent! !ctags *.py"
 
 " Display
 " ----------------------------------------------------------------------------
 set title                        " display title in X.
-set foldcolumn=4                 " display folds
+set foldcolumn=3                 " display folds
 set nowrap                       " Prevent wrapping
-colorscheme desert               " Select colorscheme
+colorscheme adaryn
 set background=dark
-  " Quick switch for color schemes for bright/dark console settings
-  nmap <F2> :colorscheme my_inkpot<CR>:set background=dark<CR>
-  nmap <F3> :colorscheme chela_light<CR>:set background=light<CR>
-set cursorline                   " Vim7 Only!
 
 
 " UI Tweaks
 " ----------------------------------------------------------------------------
-" make search results appear in the middle of the screen:
+" make search results appear in the middle of the screen
 nmap n nzz
 nmap N Nzz
 nmap * *zz
 nmap # #zz
 nmap g* g*zz
 nmap g# g#zz
-nmap <kMinus>  :bprevious<CR>    " Switch to previous buffer
-nmap <kPlus>   :bnext<CR>        " Switch to next buffer
+
+" Switch to previous/next buffer
+nmap <kMinus>  :bprevious<CR>
+nmap <kPlus>   :bnext<CR>
+
+" CTRL+S saves the buffer
+nmap <C-s>     :w<CR>
+
+" Jump to the previous/next entry in the quickfix list
+nmap <C-Up>    :cNext<CR>
+nmap <C-Down>  :cnext<CR>
+
 set backspace=indent,eol,start   " allow backspacing over everything in insert mode
 set history=50                   " keep 50 lines of command line history
 set ruler                        " show the cursor position all the time
 set showcmd                      " display incomplete commands
-nnoremap Q gq                    " Don't use Ex mode, use Q for formatting
+set so=7                         " Keep a 7-lines lookahead when scrolling
+set wildmenu                     " Show auto-complete matches
+"
+" Don't use Ex mode, use Q for formatting
+nnoremap Q gq
+
+" Print Settings
+" ----------------------------------------------------------------------------
+set printoptions=header:3,number:y,left:10mm,right:10mm,top:10mm,bottom:10mm
 
 " Abbreviations
 " ----------------------------------------------------------------------------
-iab miam Michel Albert <michel@albert.lu>
+iab miam Michel Albert <michel.albert@statec.etat.lu>
+
+" SVNCommand Settings
+" ----------------------------------------------------------------------------
+let SVNCommandEdit='split'
+let SVNCommandNameResultBuffers=1
+let mapleader=','
+
+"
+" NERDTree Settings
+" ----------------------------------------------------------------------------
+let NERDTreeIgnore=['\.bjk$', '\.b[xm]i$', '\.ms[ux]$' , '\.bd[bm]$' ,
+         \ '\.bfi$' , '\.bpk$' , '\.bsk$' , '\.bwm$' , '\.exe$' ,
+         \ '\.exe$' , '\.ico$' , '\.lnk$' , '\.sfv$', '\~$' ]
+let NERDTreeWinSize=40
+map <C-S-e> :NERDTree<CR>
+
+"
+" Store viminfo on exit
+set viminfo=%,'50,<100,n~/.viminfo
 
 " EOF... sort of ;)
 " good example at http://www.stack.nl/~wjmb/stuff/dotfiles/vimrc.htm

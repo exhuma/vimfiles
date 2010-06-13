@@ -64,7 +64,6 @@ if has("gui_running")
     hi lCursor        gui=NONE   guifg=#ffeadc   guibg=#806b5d
     hi CursorIM       gui=NONE   guifg=#ffeadc   guibg=#806b5d
     hi CursorLine     gui=NONE   guifg=NONE      guibg=#230e00
-    hi Pmenu          gui=NONE   guifg=NONE      guibg=#230e00
     hi Cursor         gui=NONE   guifg=#ffeadc   guibg=#3b6f3b
     hi MatchParen     gui=BOLD   guifg=#ffffff   guibg=NONE
 
@@ -72,7 +71,8 @@ if has("gui_running")
     hi FoldColumn     gui=NONE   guifg=#8b8bcd   guibg=#2e2e2e
 
     hi Directory      gui=NONE   guifg=#00ff8b   guibg=NONE
-    hi LineNr         gui=NONE   guifg=#8b8bcd   guibg=#2e2e2e
+"    hi LineNr         gui=NONE   guifg=#8b8bcd   guibg=#2e2e2e
+    hi LineNr         gui=NONE   guifg=#8b8bcd   guibg=#000000
     hi NonText        gui=BOLD   guifg=#8b8bcd   guibg=NONE
     hi SpecialKey     gui=BOLD   guifg=#8b00cd   guibg=NONE
     hi Title          gui=BOLD   guifg=#af4f4b   guibg=#1e1e27
@@ -93,11 +93,16 @@ if has("gui_running")
     hi Underlined     gui=BOLD   guifg=#ffffcd   guibg=NONE
     hi TaglistTagName gui=BOLD   guifg=#808bed   guibg=NONE
 
-    hi Leo_block      gui=NONE   guifg=#3c3c4e
+    hi Pmenu          gui=NONE   guibg=#e3e8a4   guibg=#414155
+    hi PmenuSel       gui=BOLD   guibg=#e3e8a4   guibg=#30303f
+
+    hi Leo_block      gui=NONE   guifg=#3c3c4e   guibg=NONE
     hi Robodoc        gui=NONE   guifg=#555544   guibg=NONE
     hi RoboTag        gui=NONE   guifg=#557744   guibg=NONE
     hi Debug_Comment  gui=NONE   guifg=#eeee00   guibg=#882222
     hi Note_Comment   gui=NONE   guifg=#eeee00   guibg=#225522
+    hi Todo_Comment   gui=NONE   guifg=#eeee00   guibg=#4f497e
+
 else
     exec "hi Normal         cterm=NONE   ctermfg=" . <SID>X("78") . "   ctermbg=" . <SID>X(80) . ""
     exec "hi IncSearch      cterm=BOLD   ctermfg=" . <SID>X("80") . "   ctermbg=" . <SID>X(73) . ""
@@ -145,6 +150,13 @@ else
     exec "hi Type           cterm=NONE   ctermfg=" . <SID>X("71") . "   ctermbg=NONE"
     exec "hi Underlined     cterm=BOLD   ctermfg=" . <SID>X("78") . "   ctermbg=NONE"
     exec "hi TaglistTagName cterm=BOLD   ctermfg=" . <SID>X("26") . "   ctermbg=NONE"
+
+    exec "hi Leo_block      cterm=NONE   ctermfg=" . <SID>X("20") . "   ctermbg=NONE"
+    exec "hi Robodoc        cterm=NONE   ctermfg=" . <SID>X("20") . "   ctermbg=NONE"
+    exec "hi RoboTag        cterm=NONE   ctermfg=" . <SID>X("20") . "   ctermbg=NONE"
+    exec "hi Debug_Comment  cterm=NONE   ctermfg=" . <SID>X("80") . "   ctermbg=" . <SID>X(73) . ""
+    exec "hi Note_Comment   cterm=NONE   ctermfg=" . <SID>X("20") . "   ctermbg=" . <SID>X(10) . ""
+    exec "hi Todo_Comment   cterm=NONE   ctermfg=" . <SID>X("20") . "   ctermbg=" . <SID>X(10) . ""
 endif
 
 " vim: set et :
