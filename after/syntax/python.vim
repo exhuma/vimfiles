@@ -15,3 +15,9 @@ hi link epydocTags Special
 
 " Abbreviations
 iab vimode # vim: set shiftwidth=3 tabstop=3 expandtab:# vim: set foldmethod=marker foldmarker={{{,}}} foldenable foldlevel=0:
+
+" Custom Colors
+hi Debug_Comment  gui=NONE   guifg=#eeee00   guibg=#882222 term=bold cterm=bold ctermfg=3
+hi Note_Comment   gui=NONE   guifg=#eeee00   guibg=#225522 term=bold cterm=bold ctermfg=3
+hi Todo_Comment   gui=NONE   guifg=#eeee00   guibg=#4f497e term=bold cterm=bold ctermfg=3
+

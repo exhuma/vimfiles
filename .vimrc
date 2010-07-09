@@ -110,6 +110,8 @@ set ruler                        " show the cursor position all the time
 set showcmd                      " display incomplete commands
 set so=7                         " Keep a 7-lines lookahead when scrolling
 set wildmenu                     " Show auto-complete matches
+set statusline=%<%f%h%m%r%=\|\ Dec:\ %-3b\ Hex:\ 0x%2B\ \|\ %20(%4l,%4c%V\ \|\ %3P%)
+set laststatus=2                 " Always show the status bar
 "
 " Don't use Ex mode, use Q for formatting
 nnoremap Q gq
@@ -140,6 +142,11 @@ map <C-S-e> :NERDTree<CR>
 "
 " Store viminfo on exit
 set viminfo=%,'50,<100,n~/.viminfo
+
+"
+" Other Keyboard mappings
+" ----------------------------------------------------------------------------
+map <F4> :silent !/usr/bin/konsole --workdir :pwd<CR>
 
 " EOF... sort of ;)
 " good example at http://www.stack.nl/~wjmb/stuff/dotfiles/vimrc.htm
