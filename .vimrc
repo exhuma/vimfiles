@@ -61,7 +61,7 @@ set shiftwidth=3                 " Force indentation to be 3 spaces
 set tabstop=3                    "          -- idem --
 set list                         " EOL, trailing spaces, tabs: show them.
 set lcs=tab:├─                   " Tabs are shown as ├──├──
-set lcs+=trail:▒                 " Trailing spaces are shown as shrouded blocks
+set lcs+=trail:␣                 " Display trailing spaces
 set expandtab                    " always expand tabs to spaces
 
 " Development helpers
