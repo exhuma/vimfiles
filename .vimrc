@@ -61,7 +61,7 @@ set shiftwidth=3                 " Force indentation to be 3 spaces
 set tabstop=3                    "          -- idem --
 set list                         " EOL, trailing spaces, tabs: show them.
 set lcs=tab:├─                   " Tabs are shown as ├──├──
-set lcs+=trail:▒                 " Trailing spaces are shown as shrouded blocks
+set lcs+=trail:␣                 " Show trailing spaces
 set expandtab                    " always expand tabs to spaces
 
 " Development helpers
@@ -140,6 +140,18 @@ map <C-S-e> :NERDTree<CR>
 "
 " Store viminfo on exit
 set viminfo=%,'50,<100,n~/.viminfo
+
+"let g:SaveUndoLevels = &undolevels
+"let g:BufSizeThreshold = 1000000
+"if has("autocmd")
+"  " Store preferred undo levels
+"  au VimEnter * let g:SaveUndoLevels = &undolevels
+"  " Don't use a swap file for big files
+"  au BufReadPre * if getfsize(expand("<afile>")) >= g:BufSizeThreshold | setlocal noswapfile | endif
+"  " Upon entering a buffer, set or restore the number of undo levels
+"  au BufEnter * if getfsize(expand("<afile>")) < g:BufSizeThreshold | let &undolevels=g:SaveUndoLevels | hi Cursor term=reverse ctermbg=black guibg=black | else | set undolevels=-1 | hi Cursor term=underline ctermbg=red guibg=red | endif
+"endif
+
 
 " EOF... sort of ;)
 " good example at http://www.stack.nl/~wjmb/stuff/dotfiles/vimrc.htm
