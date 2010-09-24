@@ -142,7 +142,7 @@ syntax keyword spsSysVars $casenum $date $jdate $length $sysmis $time $width
 
 " Comments and Strings
 syntax region spsComment          start="/\*"  end="\*\/" contains=NONE
-syntax region spsComment2         start="^\*"  end="\.$"  contains=NONE
+syntax region spsComment2         start="^\s\{-}\*"  end="\.$"  contains=NONE
 syntax match  spsCommentError     "\*/"
 syntax region  spsString            start=+'+  skip=+\\\\\|\\"+  end=+'+
 syntax region  spsString2           start=+"+  skip=+\\\\\|\\'+  end=+"+

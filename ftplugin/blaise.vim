@@ -47,8 +47,15 @@ endfun
 setlocal makeprg=\"C:\\Program\ Files\\StatNeth\\Blaise\ 4.8\ Enterprise\\bin\\b4cpars.exe\"\ %
 setlocal errorformat=%-Gb4cpars%.exe%.%#,%-GParsing:%.%#,%EError:\ \ \ \ %m,%CFile:\ \ \ \ \ %f,%CLine:\ \ \ \ \ %l,%ZPosition:\ %c
 
-nmap <F11> :call BLAISENextTag( "E", "<font color=\"#0000ff\">", "</font>" )<CR>
-nmap <F12> :call BLAISENextTag( "W", "<font color=\"#ff0000\">", "</font>" )<CR>
+nmap <F11> :call BLAISENextTag( "E", "<font color='#0000ff'><b>", ":</b></font>" )<CR>
+nmap <F12> :call BLAISENextTag( "W", "<font color='#ff0000'><b>", ":</b></font>" )<CR>
+nmap <Leader>cam :!start "C:\Program Files\StatNeth\Blaise 4.8 Enterprise\Bin\cameleon.exe"<CR>
+nmap <Leader>boi :!start "C:\Program Files\StatNeth\Blaise 4.8 Enterprise\Bin\BoWrkShp.exe"<CR>
+nmap <Leader>diw :!start "C:\Program Files\StatNeth\Blaise 4.8 Enterprise\Bin\DepCfg.exe"<CR>
+nmap <Leader>bml :!start "C:\Program Files\StatNeth\Blaise 4.8 Enterprise\Bin\Emily.exe"<CR>
+nmap <Leader>bmf :!start "C:\Program Files\StatNeth\Blaise 4.8 Enterprise\Bin\MenuEdit.exe"<CR>
+nmap <Leader>vmap :!start "\\STATEC_1\\COMMUN\Development\statent\combinedyears\utility\varmapper\tkmap.py"<CR>
+nmap <Leader>cc :!start "C:\Program Files\StatNeth\Blaise 4.8 Enterprise\Bin\Blaise.exe" "%:p"<CR>
 
 if has("win16") || has("win32") || has("win64")|| has("win95")
    map <F9> :make<CR>
