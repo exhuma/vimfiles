@@ -110,6 +110,8 @@ set ruler                        " show the cursor position all the time
 set showcmd                      " display incomplete commands
 set so=7                         " Keep a 7-lines lookahead when scrolling
 set wildmenu                     " Show auto-complete matches
+set statusline=%<%f%h%m%r%=\|\ Dec:\ %-3b\ Hex:\ 0x%2B\ \|\ %20(%4l,%4c%V\ \|\ %3P%)
+set laststatus=2                 " Always show the status bar
 "
 " Don't use Ex mode, use Q for formatting
 nnoremap Q gq
@@ -152,6 +154,10 @@ set viminfo=%,'50,<100,n~/.viminfo
 "  au BufEnter * if getfsize(expand("<afile>")) < g:BufSizeThreshold | let &undolevels=g:SaveUndoLevels | hi Cursor term=reverse ctermbg=black guibg=black | else | set undolevels=-1 | hi Cursor term=underline ctermbg=red guibg=red | endif
 "endif
 
+"
+" Other Keyboard mappings
+" ----------------------------------------------------------------------------
+map <F4> :silent !/usr/bin/konsole --workdir :pwd<CR>
 
 " EOF... sort of ;)
 " good example at http://www.stack.nl/~wjmb/stuff/dotfiles/vimrc.htm
