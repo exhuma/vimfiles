@@ -11,6 +11,8 @@ endif
 if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
+  set incsearch
+  set showmatch
 endif
 
 " Only do this part when compiled with support for autocommands.
@@ -44,10 +46,18 @@ else
 endif " has("autocmd") }}}
 
 "
-" VIM 7 Settings
+" Specific version settings
 " ----------------------------------------------------------------------------
 if v:version >= 700
    set cursorline
+endif
+
+if v:version >= 703
+   set colorcolumn=85
+   set relativenumber
+   set undofile
+   hi clear ColorColumn
+   hi link ColorColumn CursorLine
 endif
 
 " Other Settings
@@ -60,8 +70,8 @@ set autoindent                   " always set autoindenting on
 set shiftwidth=3                 " Force indentation to be 3 spaces
 set tabstop=3                    "          -- idem --
 set list                         " EOL, trailing spaces, tabs: show them.
-set lcs=tab:├─                   " Tabs are shown as ├──├──
-set lcs+=trail:▒                 " Trailing spaces are shown as shrouded blocks
+set lcs=tab:┈                   " Tabs are shown as ┈┈┈┈
+set lcs+=trail:␣                 " Show trailing spaces
 set expandtab                    " always expand tabs to spaces
 
 " Development helpers
@@ -147,6 +157,13 @@ set viminfo=%,'50,<100,n~/.viminfo
 " Other Keyboard mappings
 " ----------------------------------------------------------------------------
 map <F4> :silent !/usr/bin/konsole --workdir :pwd<CR>
+nnoremap <leader><space> :noh<CR>
+
+"
+" Settings for specific file types (shouldn't this go to ftplugin?)
+" ----------------------------------------------------------------------------
+let g:xml_syntax_folding=1
+au FileType xml setlocal foldmethod=syntax
 
 " EOF... sort of ;)
 " good example at http://www.stack.nl/~wjmb/stuff/dotfiles/vimrc.htm
