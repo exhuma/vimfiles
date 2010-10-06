@@ -10,3 +10,10 @@ if has("win32")
 elseif has("unix")
    set guifont=Anonymous\ Pro\ 16
 endif
+
+"
+" Specific version settings
+" ----------------------------------------------------------------------------
+if v:version >= 700
+   set cursorline
+endif

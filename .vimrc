@@ -48,9 +48,6 @@ endif " has("autocmd") }}}
 "
 " Specific version settings
 " ----------------------------------------------------------------------------
-if v:version >= 700
-   set cursorline
-endif
 
 if v:version >= 703
    set colorcolumn=85
