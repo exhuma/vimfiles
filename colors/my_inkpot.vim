@@ -99,6 +99,7 @@ if has("gui_running")
     hi Leo_block      gui=NONE   guifg=#3c3c4e   guibg=NONE
     hi Robodoc        gui=NONE   guifg=#555544   guibg=NONE
     hi RoboTag        gui=NONE   guifg=#557744   guibg=NONE
+    hi SignColumn     gui=BOLD   guifg=#ffcd00   guibg=NONE
 
 else
     exec "hi Normal         cterm=NONE   ctermfg=" . <SID>X("78") . "   ctermbg=" . <SID>X(80) . ""
