@@ -1,6 +1,7 @@
 set shiftwidth=3
 set tabstop=3
 set foldmethod=indent
+set commentstring={%s}
 
 "-----------------------------------------------------------------------------
 " Insert a new unique error-code at the cursor-position
