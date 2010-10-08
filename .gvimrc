@@ -17,3 +17,8 @@ endif
 if v:version >= 700
    set cursorline
 endif
+
+if v:version >= 703
+   hi clear ColorColumn
+   hi link ColorColumn LineNr
+endif

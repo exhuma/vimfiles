@@ -58,20 +58,16 @@ if has("gui_running")
     hi DiffDelete     gui=NONE   guifg=#ffffcd   guibg=#cd0000
     hi DiffAdd        gui=NONE   guifg=#ffffcd   guibg=#00cd00
 
-"    hi Cursor         gui=NONE   guifg=#404040   guibg=#8b8bff
-"    hi lCursor        gui=NONE   guifg=#404040   guibg=#8b8bff
-"    hi CursorIM       gui=NONE   guifg=#404040   guibg=#8b8bff
+    hi Cursor         gui=NONE   guifg=#ffeadc   guibg=#3b6f3b
     hi lCursor        gui=NONE   guifg=#ffeadc   guibg=#806b5d
     hi CursorIM       gui=NONE   guifg=#ffeadc   guibg=#806b5d
     hi CursorLine     gui=NONE   guifg=NONE      guibg=#230e00
-    hi Cursor         gui=NONE   guifg=#ffeadc   guibg=#3b6f3b
     hi MatchParen     gui=BOLD   guifg=#ffffff   guibg=NONE
 
-    hi Folded         gui=NONE   guifg=#cfcfcd   guibg=#26202f
-    hi FoldColumn     gui=NONE   guifg=#8b8bcd   guibg=#2e2e2e
+    hi Folded         gui=underline   guifg=#808062   guibg=#171720
+    hi FoldColumn     gui=NONE   guifg=#8b8bcd   guibg=#1d261d
 
     hi Directory      gui=NONE   guifg=#00ff8b   guibg=NONE
-"    hi LineNr         gui=NONE   guifg=#8b8bcd   guibg=#2e2e2e
     hi LineNr         gui=NONE   guifg=#8b8bcd   guibg=#000000
     hi NonText        gui=BOLD   guifg=#8b8bcd   guibg=NONE
     hi SpecialKey     gui=BOLD   guifg=#8b00cd   guibg=NONE

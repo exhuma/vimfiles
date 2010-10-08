@@ -50,11 +50,9 @@ endif " has("autocmd") }}}
 " ----------------------------------------------------------------------------
 
 if v:version >= 703
-   set colorcolumn=85
+   set colorcolumn=80
    set relativenumber
    set undofile
-   hi clear ColorColumn
-   hi link ColorColumn CursorLine
 endif
 
 " Other Settings
@@ -84,7 +82,7 @@ au! BufWritePost *.py "silent! !ctags *.py"
 " Display
 " ----------------------------------------------------------------------------
 set title                        " display title in X.
-set foldcolumn=3                 " display folds
+set foldcolumn=5                 " display up to 4 folds
 set nowrap                       " Prevent wrapping
 colorscheme adaryn
 set background=dark
