@@ -84,7 +84,7 @@ au! BufWritePost *.py "silent! !ctags *.py"
 " Display
 " ----------------------------------------------------------------------------
 set title                        " display title in X.
-set foldcolumn=3                 " display folds
+set foldcolumn=5                 " display up to 4 folds
 set nowrap                       " Prevent wrapping
 colorscheme adaryn
 set background=dark
