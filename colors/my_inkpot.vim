@@ -72,7 +72,7 @@ if has("gui_running")
     hi NonText        gui=BOLD   guifg=#8b8bcd   guibg=NONE
     hi SpecialKey     gui=BOLD   guifg=#8b00cd   guibg=NONE
     hi Title          gui=BOLD   guifg=#af4f4b   guibg=#1e1e27
-    hi Visual         gui=NONE   guifg=#603030   guibg=#edab60
+    hi Visual         gui=BOLD   guifg=NONE      guibg=#000000
 
     hi Comment        gui=NONE   guifg=#444477   guibg=NONE
     hi Constant       gui=NONE   guifg=#ffcd8b   guibg=NONE
