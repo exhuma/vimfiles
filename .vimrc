@@ -50,11 +50,9 @@ endif " has("autocmd") }}}
 " ----------------------------------------------------------------------------
 
 if v:version >= 703
-   set colorcolumn=85
+   set colorcolumn=80
    set relativenumber
    set undofile
-   hi clear ColorColumn
-   hi link ColorColumn CursorLine
 endif
 
 " Other Settings
