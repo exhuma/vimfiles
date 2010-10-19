@@ -4,6 +4,11 @@ if has("vms")     "{{{ Stuff from stack.nl (see bottom of file)
   set nobackup    " do not keep a backup file, use versions instead
 else
   set backup      " keep a backup file
+  if has("win16") || has("win32") || has("win64")|| has("win95")
+     set backupdir=.\\.vimfiles,.
+  elseif has("unix")
+     set backupdir=./.vimfiles,.
+  endif
 endif
 
 " Switch syntax highlighting on, when the terminal has colors
@@ -53,6 +58,11 @@ if v:version >= 703
    set colorcolumn=80
    set relativenumber
    set undofile
+   if has("win16") || has("win32") || has("win64")|| has("win95")
+      set undodir=.\\.vimfiles,.
+   elseif has("unix")
+      set undodir=./.vimfiles,.
+   endif
 endif
 
 " Other Settings
@@ -170,6 +180,7 @@ nnoremap <leader><space> :noh<CR>
 " ----------------------------------------------------------------------------
 let g:xml_syntax_folding=1
 au FileType xml setlocal foldmethod=syntax
+
 
 " EOF... sort of ;)
 " good example at http://www.stack.nl/~wjmb/stuff/dotfiles/vimrc.htm
