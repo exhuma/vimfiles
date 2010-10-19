@@ -144,7 +144,7 @@ let mapleader=','
 " NERDTree Settings
 " ----------------------------------------------------------------------------
 let NERDTreeIgnore=['\.bjk$', '\.b[xm]i$', '\.ms[ux]$' , '\.bd[bm]$' ,
-         \ '\.bfi$' , '\.bpk$' , '\.bsk$' , '\.bwm$' , '\.exe$' ,
+         \ '\.bfi$' , '\.bpk$' , '\.bsk$' , '\.bwm$' , '\.exe$' , '\.tmp$' ,
          \ '\.exe$' , '\.ico$' , '\.lnk$' , '\.sfv$', '\~$' ]
 let NERDTreeWinSize=40
 map <C-S-e> :NERDTree<CR>
