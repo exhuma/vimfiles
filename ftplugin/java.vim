@@ -1,3 +1,17 @@
+" The following two macros help with the repetitive code of property change
+" support in Java Beans.
+"
+" Macro #1 creates the static constants containing the property names.
+" Macro #2 creates the old/new values in the property setter and fires the
+"          property change event.
+"
+" Simply drop this file into "~/.vim/ftplugin" to get it working.
+"
+" NOTE: The macros are not yet well tested. Use at your own risk.
+" KNOWN ISSUE: If a property contains a type parameter (for example in
+"              relations), the event-firing code will not be generated
+"              correctly. But that is easily fixed by hand later on.
+
 " Mapping to create a new Property name constant
 "    - The constants will be dropped at mark `a
 "      The mark *must* exist beforehand!
