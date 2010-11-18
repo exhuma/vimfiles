@@ -5,9 +5,9 @@ if has("vms")     "{{{ Stuff from stack.nl (see bottom of file)
 else
   set backup      " keep a backup file
   if has("win16") || has("win32") || has("win64")|| has("win95")
-     set backupdir=.\\.vimfiles,.
+     set backupdir=.\\_vimfiles,.
   elseif has("unix")
-     set backupdir=./.vimfiles,.
+     set backupdir=./_vimfiles,.
   endif
 endif
 
@@ -59,9 +59,9 @@ if v:version >= 703
    set relativenumber
    set undofile
    if has("win16") || has("win32") || has("win64")|| has("win95")
-      set undodir=.\\.vimfiles,.
+      set undodir=.\\_vimfiles,.
    elseif has("unix")
-      set undodir=./.vimfiles,.
+      set undodir=./_vimfiles,.
    endif
 endif
 
@@ -144,7 +144,7 @@ set printoptions=header:3,number:y,left:10mm,right:10mm,top:10mm,bottom:10mm
 " ----------------------------------------------------------------------------
 iab miam Michel Albert <michel.albert@statec.etat.lu>
 
-" SVNCommand Settings
+" SVNCommand Settings 
 " ----------------------------------------------------------------------------
 let SVNCommandEdit='split'
 let SVNCommandNameResultBuffers=1
@@ -154,7 +154,7 @@ let mapleader=','
 " NERDTree Settings
 " ----------------------------------------------------------------------------
 let NERDTreeIgnore=['\.bjk$', '\.b[xm]i$', '\.ms[ux]$' , '\.bd[bm]$' ,
-         \ '\.bfi$' , '\.bpk$' , '\.bsk$' , '\.bwm$' , '\.exe$' ,
+         \ '\.bfi$' , '\.bpk$' , '\.bsk$' , '\.bwm$' , '\.exe$' , '\.tmp$' ,
          \ '\.exe$' , '\.ico$' , '\.lnk$' , '\.sfv$', '\~$' ]
 let NERDTreeWinSize=40
 map <C-S-e> :NERDTree<CR>
