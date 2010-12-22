@@ -8,7 +8,7 @@ set mousehide                    " Hide the mouse pointer while typing
 if has("win32")
    set guifont=Anonymous_Pro:h11:cANSI
 elseif has("unix")
-   set guifont=Anonymous\ Pro\ 16
+   set guifont=Anonymous\ Pro\ 12
 endif
 
 "
