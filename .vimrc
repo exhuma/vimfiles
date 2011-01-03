@@ -178,6 +178,7 @@ set viminfo=%,'50,<100,n~/.viminfo
 " Other Keyboard mappings
 " ----------------------------------------------------------------------------
 map <F4> :silent !/usr/bin/konsole --workdir :pwd<CR>
+nnoremap <silent> <F8> :TlistToggle<CR>
 nnoremap <leader><space> :noh<CR>
 
 "
