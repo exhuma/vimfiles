@@ -68,6 +68,7 @@ endif
 " Other Settings
 " ----------------------------------------------------------------------------
 set encoding=utf-8
+set smartcase
 
 " Indentation settings
 " ----------------------------------------------------------------------------
@@ -88,6 +89,10 @@ autocmd BufEnter * exec('setlocal complete+=k$VIMRUNTIME/syntax/'.&ft.'.vim')
 "Insert indentation modeline
 imap <F12> # vim: set shiftwidth=3 tabstop=3 expandtab ai:<CR>
 au! BufWritePost *.py "silent! !ctags *.py"
+
+" replace all @n@ in a selection with an auto-number (based on the line,
+" starting at 0)
+nmap <F11> :'<,'>s/@n@/\=printf("%d;", line(".")-line("'<"))/
 
 " Display
 " ----------------------------------------------------------------------------
