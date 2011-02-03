@@ -92,7 +92,7 @@ au! BufWritePost *.py "silent! !ctags *.py"
 
 " replace all @n@ in a selection with an auto-number (based on the line,
 " starting at 0)
-nmap <F11> :'<,'>s/@n@/\=printf("%d;", line(".")-line("'<"))/
+vmap <F11> :s/@n@/\=printf("%d;", line(".")-line("'<"))/<CR>
 
 " Display
 " ----------------------------------------------------------------------------
