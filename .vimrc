@@ -1,5 +1,12 @@
 set nocompatible           " Behave like vim and not like vi!
 
+" vundle settings
+filetype off
+set rtp+=~/.vim/vundle.git/
+call vundle#rc()
+Bundle 'scrooloose/nerdtree'
+Bundle 'csv.vim'
+
 if has("vms")     "{{{ Stuff from stack.nl (see bottom of file)
   set nobackup    " do not keep a backup file, use versions instead
 else
