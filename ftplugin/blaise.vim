@@ -1,6 +1,6 @@
 set shiftwidth=3
 set tabstop=3
-set foldmethod=indent
+set foldmethod=syntax
 set commentstring={%s}
 
 "-----------------------------------------------------------------------------
