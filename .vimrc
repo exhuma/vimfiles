@@ -72,8 +72,8 @@ set encoding=utf-8
 " Indentation settings
 " ----------------------------------------------------------------------------
 set autoindent                   " always set autoindenting on
-set shiftwidth=3                 " Force indentation to be 3 spaces
-set tabstop=3                    "          -- idem --
+set shiftwidth=4                 " Force indentation to be 4 spaces
+set tabstop=4                    "          -- idem --
 set list                         " EOL, trailing spaces, tabs: show them.
 set lcs=tab:├─                   " Tabs are shown as ├──├──
 set lcs+=trail:␣                 " Show trailing spaces
@@ -130,6 +130,7 @@ set ruler                        " show the cursor position all the time
 set showcmd                      " display incomplete commands
 set so=7                         " Keep a 7-lines lookahead when scrolling
 set wildmenu                     " Show auto-complete matches
+set wildignore=*.bdb,*.msu,*.bfi,*.bjk,*.bpk,*.bdm,*.bfm,*.bxi,*.bmi,*.msx,*.lnk,*~,*.bak
 set statusline=%<%f%h%m%r%=\|\ Dec:\ %-3b\ Hex:\ 0x%2B\ \|\ %20(%4l,%4c%V\ \|\ %3P%)
 set laststatus=2                 " Always show the status bar
 "
@@ -139,6 +140,11 @@ nnoremap Q gq
 " Print Settings
 " ----------------------------------------------------------------------------
 set printoptions=header:3,number:y,left:10mm,right:10mm,top:10mm,bottom:10mm
+if has("win32")
+   set printfont=Anonymous_Pro:h10
+elseif has("unix")
+   set printfont=Anonymous\ Pro\ 10
+endif
 
 " Abbreviations
 " ----------------------------------------------------------------------------

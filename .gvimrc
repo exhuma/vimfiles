@@ -22,3 +22,5 @@ if v:version >= 703
    hi clear ColorColumn
    hi link ColorColumn LineNr
 endif
+
+set guioptions-=T
