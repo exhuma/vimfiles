@@ -22,3 +22,6 @@ if v:version >= 703
    hi clear ColorColumn
    hi link ColorColumn LineNr
 endif
+
+" Remove toolbar
+set guioptions-=T

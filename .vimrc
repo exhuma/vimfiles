@@ -6,6 +6,7 @@ set rtp+=~/.vim/vundle.git/
 call vundle#rc()
 Bundle 'scrooloose/nerdtree'
 Bundle 'csv.vim'
+Bundle 'ZenCoding.vim'
 
 if has("vms")     "{{{ Stuff from stack.nl (see bottom of file)
   set nobackup    " do not keep a backup file, use versions instead
@@ -17,6 +18,8 @@ else
      set backupdir=./_vimfiles,.
   endif
 endif
+
+set t_Co=256
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -63,7 +66,6 @@ endif " has("autocmd") }}}
 
 if v:version >= 703
    set colorcolumn=80
-   set relativenumber
    set undofile
    if has("win16") || has("win32") || has("win64")|| has("win95")
       set undodir=.\\_vimfiles,.
@@ -100,6 +102,9 @@ au! BufWritePost *.py "silent! !ctags *.py"
 " replace all @n@ in a selection with an auto-number (based on the line,
 " starting at 0)
 vmap <F11> :s/@n@/\=printf("%d;", line(".")-line("'<"))/<CR>
+
+"highlight currently selected column
+vmap <F5> <ESC>:let &l:cc = join(range(getpos("'<")[2], getpos("'>")[2]),',')<CR>
 
 " Display
 " ----------------------------------------------------------------------------
@@ -172,6 +177,13 @@ let NERDTreeWinSize=40
 map <C-S-e> :NERDTree<CR>
 
 "
+" Zen Coding Settings
+" ----------------------------------------------------------------------------
+let g:user_zen_settings = {
+\  'indentation' : '   '
+\}
+
+"
 " Store viminfo on exit
 set viminfo=%,'50,<100,n~/.viminfo
 
@@ -199,6 +211,28 @@ nnoremap <leader><space> :noh<CR>
 let g:xml_syntax_folding=1
 au FileType xml setlocal foldmethod=syntax
 
+"
+" Disable some features on large files
+" ----------------------------------------------------------------------------
+" Protect large files from sourcing and other overhead.
+" Files become read only
+" ----------------------------------------------------------------------------
+
+if !exists("my_auto_commands_loaded")
+   let my_auto_commands_loaded = 1
+   " Large files are > 10M
+   " Set options:
+   " eventignore+=FileType (no syntax highlighting etc
+   " assumes FileType always on)
+   " noswapfile (save copy of file)
+   " bufhidden=unload (save memory when other file is viewed)
+   " buftype=nowritefile (is read-only)
+   " undolevels=-1 (no undo possible)
+   let g:LargeFile = 1024 * 1024 * 10
+   augroup LargeFile
+      autocmd BufReadPre * let f=expand("<afile>") | if getfsize(f) > g:LargeFile | set eventignore+=FileType | setlocal noswapfile bufhidden=unload buftype=nowrite undolevels=-1 | else | set eventignore-=FileType | endif
+   augroup END
+endif
 
 " EOF... sort of ;)
 " good example at http://www.stack.nl/~wjmb/stuff/dotfiles/vimrc.htm
