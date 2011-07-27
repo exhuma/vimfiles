@@ -1,6 +1,8 @@
 set nocompatible           " Behave like vim and not like vi!
 
-" vundle settings
+"
+" vundle (https://github.com/gmarik/vundle) settings
+" ----------------------------------------------------------------------------
 filetype off
 set rtp+=~/.vim/vundle.git/
 call vundle#rc()
@@ -12,6 +14,9 @@ if has("vms")     "{{{ Stuff from stack.nl (see bottom of file)
   set nobackup    " do not keep a backup file, use versions instead
 else
   set backup      " keep a backup file
+  " If the directory '_vimfiles' exist, put all vim related files (swap,
+  " backup, ...) into it instead of the the directory of the file. This keeps
+  " the folder clean
   if has("win16") || has("win32") || has("win64")|| has("win95")
      set backupdir=.\\_vimfiles,.
   elseif has("unix")
@@ -19,16 +24,12 @@ else
   endif
 endif
 
-set t_Co=256
-
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if &t_Co > 2 || has("gui_running")
-  syntax on
-  set hlsearch
-  set incsearch
-  set showmatch
-endif
+" Switch syntax highlighting on, highlight the current search and the matching
+" parentheses/brackets,...
+syntax on
+set hlsearch
+set incsearch
+set showmatch
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -60,13 +61,29 @@ else
 
 endif " has("autocmd") }}}
 
-"
-" Specific version settings
-" ----------------------------------------------------------------------------
+" Set a decent text width. This makes printouts cleaner, and makes it easier
+" to read the files on an 80-column screen (f. ex. a server monitor)
+set textwidth=78
+
+" Enable 256 color support on all terminals. This makes it actually feasible
+" to enable 'cursorline' and also allows me to use less obtrusive colors for
+" othe elements (like 'colorcolumn')
+set t_Co=256
+
+if v:version >= 700
+    " Highlight the line containing the cursor
+    set cursorline
+endif
 
 if v:version >= 703
-   set colorcolumn=80
+   " Highlight the column where the text should wrap
+   exec printf("set colorcolumn=%d", &textwidth+1)
+
+   " keep a file containing undo info. So you can undo even after closing the
+   " file
    set undofile
+
+   " keep special undofiles inside the '_vimfiles' subfolder if it exists
    if has("win16") || has("win32") || has("win64")|| has("win95")
       set undodir=.\\_vimfiles,.
    elseif has("unix")
@@ -74,36 +91,39 @@ if v:version >= 703
    endif
 endif
 
-" Other Settings
-" ----------------------------------------------------------------------------
+" Default editor encoding 
 set encoding=utf-8
+
+" Ignore case for search operations ...
+set ignorecase
+
+" ... but be case sensitive if the search pattern contains uppercase chars
 set smartcase
 
 " Indentation settings
 " ----------------------------------------------------------------------------
 set autoindent                   " always set autoindenting on
-set shiftwidth=3                 " Force indentation to be 3 spaces
-set tabstop=3                    "          -- idem --
+set shiftwidth=4                 " Force indentation to be 4 spaces
+set tabstop=4                    "          -- idem --
 set list                         " EOL, trailing spaces, tabs: show them.
 set lcs=tab:├─                   " Tabs are shown as ├──├──
-set lcs+=trail:␣                 " Show trailing spaces
+set lcs+=trail:␣                 " Show trailing spaces as ␣
 set expandtab                    " always expand tabs to spaces
 
 " Development helpers
 " ----------------------------------------------------------------------------
-set showmatch                    " Show matching braces
+
 " for ctrl-P and ctrl-N completion, get things from syntax file
-autocmd BufEnter * exec('setlocal complete+=k$VIMRUNTIME/syntax/'.&ft.'.vim')
-"autocmd FileType *  execute "setlocal complete+="."k/usr/share/vim/vim62/syntax/".getbufvar("%","current_syntax").".vim"
+autocmd BufEnter * exec('setlocal complete+=k$VIMRUNTIME/syntax/'.&filetype.'.vim')
+
 "Insert indentation modeline
-imap <F12> # vim: set shiftwidth=3 tabstop=3 expandtab ai:<CR>
 au! BufWritePost *.py "silent! !ctags *.py"
 
 " replace all @n@ in a selection with an auto-number (based on the line,
 " starting at 0)
 vmap <F11> :s/@n@/\=printf("%d;", line(".")-line("'<"))/<CR>
 
-"highlight currently selected column
+" highlight columns of the current visual selection
 vmap <F5> <ESC>:let &l:cc = join(range(getpos("'<")[2], getpos("'>")[2]),',')<CR>
 
 " Display
@@ -114,6 +134,10 @@ set nowrap                       " Prevent wrapping
 colorscheme molokai
 set background=dark
 
+" Use a less intrusive color for the color column (It's not linked in
+" the 'molokai' colorscheme as of this writing)
+hi clear ColorColumn
+hi link ColorColumn LineNr
 
 " UI Tweaks
 " ----------------------------------------------------------------------------
@@ -145,11 +169,11 @@ set backspace=indent,eol,start   " allow backspacing over everything in insert m
 set history=50                   " keep 50 lines of command line history
 set ruler                        " show the cursor position all the time
 set showcmd                      " display incomplete commands
-set so=7                         " Keep a 7-lines lookahead when scrolling
+set scrolloff=7                  " Keep a 7-lines 'lookahead' when scrolling
 set wildmenu                     " Show auto-complete matches
 set statusline=%<%f%h%m%r%=\|\ Dec:\ %-3b\ Hex:\ 0x%2B\ \|\ %20(%4l,%4c%V\ \|\ %3P%)
 set laststatus=2                 " Always show the status bar
-"
+
 " Don't use Ex mode, use Q for formatting
 nnoremap Q gq
 
@@ -157,11 +181,7 @@ nnoremap Q gq
 " ----------------------------------------------------------------------------
 set printoptions=header:3,number:y,left:10mm,right:10mm,top:10mm,bottom:10mm
 
-" Abbreviations
-" ----------------------------------------------------------------------------
-iab miam Michel Albert <michel.albert@statec.etat.lu>
-
-" SVNCommand Settings 
+" SVNCommand Settings
 " ----------------------------------------------------------------------------
 let SVNCommandEdit='split'
 let SVNCommandNameResultBuffers=1
@@ -174,7 +194,7 @@ let NERDTreeIgnore=['\.bjk$', '\.b[xm]i$', '\.ms[ux]$' , '\.bd[bm]$' ,
          \ '\.bfi$' , '\.bpk$' , '\.bsk$' , '\.bwm$' , '\.exe$' , '\.tmp$' ,
          \ '\.exe$' , '\.ico$' , '\.lnk$' , '\.sfv$', '\~$' ]
 let NERDTreeWinSize=40
-map <C-S-e> :NERDTree<CR>
+map <C-S-e> :NERDTreeToggle<CR>
 
 "
 " Zen Coding Settings
@@ -187,22 +207,12 @@ let g:user_zen_settings = {
 " Store viminfo on exit
 set viminfo=%,'50,<100,n~/.viminfo
 
-"let g:SaveUndoLevels = &undolevels
-"let g:BufSizeThreshold = 1000000
-"if has("autocmd")
-"  " Store preferred undo levels
-"  au VimEnter * let g:SaveUndoLevels = &undolevels
-"  " Don't use a swap file for big files
-"  au BufReadPre * if getfsize(expand("<afile>")) >= g:BufSizeThreshold | setlocal noswapfile | endif
-"  " Upon entering a buffer, set or restore the number of undo levels
-"  au BufEnter * if getfsize(expand("<afile>")) < g:BufSizeThreshold | let &undolevels=g:SaveUndoLevels | hi Cursor term=reverse ctermbg=black guibg=black | else | set undolevels=-1 | hi Cursor term=underline ctermbg=red guibg=red | endif
-"endif
-
 "
 " Other Keyboard mappings
 " ----------------------------------------------------------------------------
 map <F4> :silent !/usr/bin/konsole --workdir :pwd<CR>
 nnoremap <silent> <F8> :TlistToggle<CR>
+" quickly clear the search string (to clear highlights)
 nnoremap <leader><space> :noh<CR>
 
 "
@@ -217,7 +227,6 @@ au FileType xml setlocal foldmethod=syntax
 " Protect large files from sourcing and other overhead.
 " Files become read only
 " ----------------------------------------------------------------------------
-
 if !exists("my_auto_commands_loaded")
    let my_auto_commands_loaded = 1
    " Large files are > 10M
@@ -235,7 +244,8 @@ if !exists("my_auto_commands_loaded")
 endif
 
 " EOF... sort of ;)
-" good example at http://www.stack.nl/~wjmb/stuff/dotfiles/vimrc.htm
+" this file is based on http://www.stack.nl/~wjmb/stuff/dotfiles/vimrc.htm
+" ... but it's been badly modified since then...
 "
-" vim: set shiftwidth=3 tabstop=3 expandtab:
+" vim: set shiftwidth=4 tabstop=4 expandtab:
 " vim: set foldmethod=marker foldmarker={{{,}}} foldenable foldlevel=0:
