@@ -7,8 +7,11 @@ filetype off
 set rtp+=~/.vim/vundle.git/
 call vundle#rc()
 Bundle 'scrooloose/nerdtree'
-Bundle 'csv.vim'
+Bundle 'jinja.vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'gitv'
 Bundle 'ZenCoding.vim'
+Bundle 'vim-coffee-script'
 
 if has("vms")     "{{{ Stuff from stack.nl (see bottom of file)
   set nobackup    " do not keep a backup file, use versions instead
@@ -172,7 +175,7 @@ set showcmd                      " display incomplete commands
 set scrolloff=7                  " Keep a 7-lines 'lookahead' when scrolling
 set wildmenu                     " Show auto-complete matches
 set wildignore=*.bdb,*.msu,*.bfi,*.bjk,*.bpk,*.bdm,*.bfm,*.bxi,*.bmi,*.msx,*.lnk,*~,*.bak
-set statusline=%<%f%h%m%r%=\|\ Dec:\ %-3b\ Hex:\ 0x%2B\ \|\ %20(%4l,%4c%V\ \|\ %3P%)
+set statusline=%<%f%m%r\ %{fugitive#statusline()}%=\|\ Dec:\ %-3b\ Hex:\ 0x%2B\ \|\ %20(%4l,%4c%V\ \|\ %3P%)
 set laststatus=2                 " Always show the status bar
 
 " Don't use Ex mode, use Q for formatting
