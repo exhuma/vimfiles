@@ -7,7 +7,6 @@ filetype off
 set rtp+=~/.vim/vundle.git/
 call vundle#rc()
 Bundle 'scrooloose/nerdtree'
-Bundle 'jinja.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'gitv'
 Bundle 'ZenCoding.vim'
