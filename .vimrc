@@ -4,7 +4,12 @@ set nocompatible           " Behave like vim and not like vi!
 " vundle (https://github.com/gmarik/vundle) settings
 " ----------------------------------------------------------------------------
 filetype off
-set rtp+=~/.vim/vundle.git/
+if has("win16") || has("win32") || has("win64")|| has("win95")
+    set rtp+=~/vimfiles/vundle.git/
+else
+    set rtp+=~/.vim/vundle.git/
+endif
+
 call vundle#rc()
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-fugitive'
@@ -118,9 +123,6 @@ set expandtab                    " always expand tabs to spaces
 " for ctrl-P and ctrl-N completion, get things from syntax file
 autocmd BufEnter * exec('setlocal complete+=k$VIMRUNTIME/syntax/'.&filetype.'.vim')
 
-"Insert indentation modeline
-au! BufWritePost *.py "silent! !ctags *.py"
-
 " replace all @n@ in a selection with an auto-number (based on the line,
 " starting at 0)
 vmap <F11> :s/@n@/\=printf("%d;", line(".")-line("'<"))/<CR>
@@ -174,7 +176,9 @@ set showcmd                      " display incomplete commands
 set scrolloff=7                  " Keep a 7-lines 'lookahead' when scrolling
 set wildmenu                     " Show auto-complete matches
 set wildignore=*.bdb,*.msu,*.bfi,*.bjk,*.bpk,*.bdm,*.bfm,*.bxi,*.bmi,*.msx,*.lnk,*~,*.bak
-set statusline=%<%f%m%r\ %{fugitive#statusline()}%=\|\ Dec:\ %-3b\ Hex:\ 0x%2B\ \|\ %20(%4l,%4c%V\ \|\ %3P%)
+" TODO: enable the git statusline *only* if fugitive is properly installed
+" set statusline=%<%f%m%r\ %{fugitive#statusline()}%=\|\ Dec:\ %-3b\ Hex:\ 0x%2B\ \|\ %20(%4l,%4c%V\ \|\ %3P%)
+set statusline=%<%f%m%r\ %=\|\ Dec:\ %-3b\ Hex:\ 0x%2B\ \|\ %20(%4l,%4c%V\ \|\ %3P%)
 set laststatus=2                 " Always show the status bar
 
 " Don't use Ex mode, use Q for formatting
