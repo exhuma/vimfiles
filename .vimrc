@@ -13,6 +13,10 @@ endif
 call vundle#rc()
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-fugitive'
+Bundle 'ervandew/supertab'
+Bundle 'taglist.vim'
+Bundle 'tasklist.vim'
+Bundle 'pythoncomplete.vim'
 Bundle 'gitv'
 Bundle 'ZenCoding.vim'
 Bundle 'vim-coffee-script'
@@ -119,9 +123,6 @@ set expandtab                    " always expand tabs to spaces
 
 " Development helpers
 " ----------------------------------------------------------------------------
-
-" for ctrl-P and ctrl-N completion, get things from syntax file
-autocmd BufEnter * exec('setlocal complete+=k$VIMRUNTIME/syntax/'.&filetype.'.vim')
 
 " replace all @n@ in a selection with an auto-number (based on the line,
 " starting at 0)
