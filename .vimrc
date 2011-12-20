@@ -16,6 +16,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'gitv'
 Bundle 'ZenCoding.vim'
 Bundle 'vim-coffee-script'
+Bundle 'ctrlp.vim'
 
 if has("vms")     "{{{ Stuff from stack.nl (see bottom of file)
   set nobackup    " do not keep a backup file, use versions instead
@@ -226,6 +227,12 @@ map <F4> :silent !/usr/bin/konsole --workdir :pwd<CR>
 nnoremap <silent> <F8> :TlistToggle<CR>
 " quickly clear the search string (to clear highlights)
 nnoremap <leader><space> :noh<CR>
+" Bubble single lines
+nnoremap <F11> ddkP
+nnoremap <F12> ddp
+" Bubble visual selection
+vnoremap <F11> xkP`[V`]
+vnoremap <F12> xp`[V`]
 
 "
 " Settings for specific file types (shouldn't this go to ftplugin?)
