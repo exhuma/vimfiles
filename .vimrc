@@ -127,10 +127,10 @@ set expandtab                    " always expand tabs to spaces
 
 " replace all @n@ in a selection with an auto-number (based on the line,
 " starting at 0)
-vmap <F11> :s/@n@/\=printf("%d;", line(".")-line("'<"))/<CR>
+vnoremap <F11> :s/@n@/\=printf("%d;", line(".")-line("'<"))/<CR>
 
 " highlight columns of the current visual selection
-vmap <F5> <ESC>:let &l:cc = join(range(getpos("'<")[2], getpos("'>")[2]),',')<CR>
+vnoremap <F5> <ESC>:let &l:cc = join(range(getpos("'<")[2], getpos("'>")[2]),',')<CR>
 
 " Display
 " ----------------------------------------------------------------------------
@@ -148,23 +148,23 @@ hi link ColorColumn LineNr
 " UI Tweaks
 " ----------------------------------------------------------------------------
 " make search results appear in the middle of the screen
-nmap n nzz
-nmap N Nzz
-nmap * *zz
-nmap # #zz
-nmap g* g*zz
-nmap g# g#zz
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
 
 " Switch to previous/next buffer
-nmap <kMinus>  :bprevious<CR>
-nmap <kPlus>   :bnext<CR>
+nnoremap <kMinus>  :bprevious<CR>
+nnoremap <kPlus>   :bnext<CR>
 
 " CTRL+S saves the buffer
-nmap <C-s>     :w<CR>
+nnoremap <C-s>     :w<CR>
 
 " Jump to the previous/next entry in the quickfix list
-nmap <C-Up>    :cNext<CR>
-nmap <C-Down>  :cnext<CR>
+nnoremap <C-Up>    :cNext<CR>
+nnoremap <C-Down>  :cnext<CR>
 
 " When moving up/down in wrapped lines, move 'screen' lines instead of
 " physical lines
@@ -208,7 +208,7 @@ let NERDTreeIgnore=['\.bjk$', '\.b[xm]i$', '\.ms[ux]$' , '\.bd[bm]$' ,
          \ '\.bfi$' , '\.bpk$' , '\.bsk$' , '\.bwm$' , '\.exe$' , '\.tmp$' ,
          \ '\.exe$' , '\.ico$' , '\.lnk$' , '\.sfv$', '\~$' ]
 let NERDTreeWinSize=40
-map <C-S-e> :NERDTreeToggle<CR>
+noremap <C-S-e> :NERDTreeToggle<CR>
 
 "
 " Zen Coding Settings
@@ -224,7 +224,7 @@ set viminfo=%,'50,<100,n~/.viminfo
 "
 " Other Keyboard mappings
 " ----------------------------------------------------------------------------
-map <F4> :silent !/usr/bin/konsole --workdir :pwd<CR>
+noremap <F4> :silent !/usr/bin/konsole --workdir :pwd<CR>
 nnoremap <silent> <F8> :TlistToggle<CR>
 " quickly clear the search string (to clear highlights)
 nnoremap <leader><space> :noh<CR>
