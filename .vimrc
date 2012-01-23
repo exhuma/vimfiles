@@ -73,10 +73,6 @@ else
 
 endif " has("autocmd") }}}
 
-" Set a decent text width. This makes printouts cleaner, and makes it easier
-" to read the files on an 80-column screen (f. ex. a server monitor)
-set textwidth=78
-
 " Enable 256 color support on all terminals. This makes it actually feasible
 " to enable 'cursorline' and also allows me to use less obtrusive colors for
 " othe elements (like 'colorcolumn')
@@ -214,7 +210,7 @@ noremap <C-S-e> :NERDTreeToggle<CR>
 " Zen Coding Settings
 " ----------------------------------------------------------------------------
 let g:user_zen_settings = {
-\  'indentation' : '   '
+\  'indentation' : '    '
 \}
 
 "
