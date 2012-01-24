@@ -21,6 +21,7 @@ Bundle 'gitv'
 Bundle 'ZenCoding.vim'
 Bundle 'vim-coffee-script'
 Bundle 'ctrlp.vim'
+Bundle 'pyflakes'
 
 if has("vms")     "{{{ Stuff from stack.nl (see bottom of file)
   set nobackup    " do not keep a backup file, use versions instead
