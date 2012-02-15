@@ -176,8 +176,54 @@ set wildmenu                     " Show auto-complete matches
 set wildignore=*.bdb,*.msu,*.bfi,*.bjk,*.bpk,*.bdm,*.bfm,*.bxi,*.bmi,*.msx,*.lnk,*~,*.bak
 " TODO: enable the git statusline *only* if fugitive is properly installed
 " set statusline=%<%f%m%r\ %{fugitive#statusline()}%=\|\ Dec:\ %-3b\ Hex:\ 0x%2B\ \|\ %20(%4l,%4c%V\ \|\ %3P%)
-set statusline=%<%f%m%r\ %=\|\ Dec:\ %-3b\ Hex:\ 0x%2B\ \|\ %20(%4l,%4c%V\ \|\ %3P%)
+
+" Status line {{{
+
+"Add the variable with the name a:varName to the statusline. Highlight it as {{{
+"'error' unless its value is in a:goodValues (a comma separated string)
+function! AddStatuslineFlag(varName, goodValues)
+  set statusline+=[
+  set statusline+=%#error#
+  exec "set statusline+=%{RenderStlFlag(".a:varName.",'".a:goodValues."',1)}"
+  set statusline+=%*
+  exec "set statusline+=%{RenderStlFlag(".a:varName.",'".a:goodValues."',0)}"
+  set statusline+=]
+endfunction " }}}
+
+"returns a:value or '' {{{
+"
+"a:goodValues is a comma separated string of values that shouldn't be
+"highlighted with the error group
+"
+"a:error indicates whether the string that is returned will be highlighted as
+"'error'
+"
+function! RenderStlFlag(value, goodValues, error)
+  let goodValues = split(a:goodValues, ',')
+  let good = index(goodValues, a:value) != -1
+  if (a:error && !good) || (!a:error && good)
+    return a:value
+  else
+    return ''
+  endif
+endfunction " }}}
+
+set statusline=
+set statusline+=%n   " Buffer number
+set statusline+=\ %< " Truncate here
+set statusline+=%f   " The filename
+set statusline+=\ %y " filetype
+call AddStatuslineFlag('&ff', 'unix')    "fileformat
+call AddStatuslineFlag('&fenc', 'utf-8') "file encoding
+set statusline+=\ %m " modified flag
+set statusline+=%r   "
+set statusline+=%=   " Separator
+set statusline+=\|\ Dec:\ %-3b\ Hex:\ 0x%2B " Character byte details
+set statusline+=\ \|\ %20(%4l,%4c%V\ \|\ %3P%) " Cursor position
+
 set laststatus=2                 " Always show the status bar
+
+" }}} End status line
 
 " Don't use Ex mode, use Q for formatting
 nnoremap Q gq
