@@ -21,7 +21,7 @@ function! FoldText()
     if size < 1000
         let size = " " . size
     endif
-    return repeat('  ', foldlevel(v:foldstart)-1) . "[" . size . "] " . output
+    return repeat(' ', (foldlevel(v:foldstart)-1) * &ts) . "[" . size . "] " . output
 endfunction
 
 syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
