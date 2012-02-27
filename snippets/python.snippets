@@ -90,3 +90,6 @@ snippet pdb
 
 snippet pp Pretty Print
 	from pprint import pprint; pprint(${1})
+
+snippet clog Class logger
+	self.__class__.LOG.${1:debug}("${2}")
