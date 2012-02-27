@@ -209,9 +209,9 @@ function! RenderStlFlag(value, goodValues, error)
 endfunction " }}}
 
 set statusline=
-set statusline+=%n   " Buffer number
+set statusline+=%2.3n   " Buffer number
 set statusline+=\ %< " Truncate here
-set statusline+=%f   " The filename
+set statusline+=%#Todo#\|%f\|%*   " The filename
 set statusline+=\ %y " filetype
 call AddStatuslineFlag('&ff', 'unix')    "fileformat
 call AddStatuslineFlag('&fenc', 'utf-8') "file encoding
