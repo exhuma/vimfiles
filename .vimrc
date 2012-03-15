@@ -137,6 +137,8 @@ set foldcolumn=5                 " display up to 4 folds
 set nowrap                       " Prevent wrapping
 colorscheme molokai
 set background=dark
+set winheight=40
+set winwidth=80
 
 " Use a less intrusive color for the color column (It's not linked in
 " the 'molokai' colorscheme as of this writing)
