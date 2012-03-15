@@ -67,6 +67,8 @@ if has("autocmd")
     \   exe "normal g`\"" |
     \ endif
 
+  autocmd FileType python set formatoptions=qorac textwidth=78
+
   augroup END
 
 else
