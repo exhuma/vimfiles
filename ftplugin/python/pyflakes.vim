@@ -46,14 +46,20 @@ if sys.version_info[:2] < (2, 5):
 scriptdir = os.path.join(os.path.dirname(vim.eval('expand("<sfile>")')), 'pyflakes')
 sys.path.insert(0, scriptdir)
 
-from pyflakes import checker, ast, messages
+import ast
+from pyflakes import checker, messages
 from operator import attrgetter
 import re
+
+class loc(object):
+    def __init__(self, lineno, col=None):
+        self.lineno = lineno
+        self.col_offset = col
 
 class SyntaxError(messages.Message):
     message = 'could not compile: %s'
     def __init__(self, filename, lineno, col, message):
-        messages.Message.__init__(self, filename, lineno, col)
+        messages.Message.__init__(self, filename, loc(lineno, col))
         self.message_args = (message,)
 
 class blackhole(object):
@@ -67,22 +73,21 @@ def check(buffer):
     # assume everything else that follows is encoded in the encoding.
     encoding_found = False
     for n, line in enumerate(contents):
-        if not encoding_found:
-            if re.match(r'^# -\*- coding: .+? -*-', line):
-                encoding_found = True
-        else:
-            # skip all preceeding lines 
-            contents = [''] * n + contents[n:]
+        if n >= 2:
             break
+        elif re.match(r'#.*coding[:=]\s*([-\w.]+)', line):
+            contents = ['']*(n+1) + contents[n+1:]
+            break
+
     contents = '\n'.join(contents) + '\n'
 
     vimenc = vim.eval('&encoding')
     if vimenc:
         contents = contents.decode(vimenc)
 
-    builtins = []
+    builtins = set(['__file__'])
     try:
-        builtins = eval(vim.eval('string(g:pyflakes_builtins)'))
+        builtins.update(set(eval(vim.eval('string(g:pyflakes_builtins)'))))
     except Exception:
         pass
 
@@ -90,7 +95,7 @@ def check(buffer):
         # TODO: use warnings filters instead of ignoring stderr
         old_stderr, sys.stderr = sys.stderr, blackhole()
         try:
-            tree = ast.parse(contents, filename)
+            tree = ast.parse(contents, filename or '<unknown>')
         finally:
             sys.stderr = old_stderr
     except:
@@ -104,7 +109,15 @@ def check(buffer):
 
         return [SyntaxError(filename, lineno, offset, str(value))]
     else:
-        w = checker.Checker(tree, filename, builtins = builtins)
+        # pyflakes looks to _MAGIC_GLOBALS in checker.py to see which
+        # UndefinedNames to ignore
+        old_globals = getattr(checker,' _MAGIC_GLOBALS', [])
+        checker._MAGIC_GLOBALS = set(old_globals) | builtins
+
+        w = checker.Checker(tree, filename)
+
+        checker._MAGIC_GLOBALS = old_globals
+
         w.messages.sort(key = attrgetter('lineno'))
         return w.messages
 
@@ -159,7 +172,7 @@ if !exists("*s:WideMsg")
         let x=&ruler | let y=&showcmd
         set noruler noshowcmd
         redraw
-        echo a:msg
+        echo strpart(a:msg, 0, &columns-1)
         let &ruler=x | let &showcmd=y
     endfun
 endif
@@ -233,7 +246,7 @@ for w in check(vim.current.buffer):
     vim.command("let l:qf_item.text = '%s'" % vim_quote(w.message % w.message_args))
     vim.command("let l:qf_item.type = 'E'")
 
-    if w.col is None or isinstance(w, SyntaxError):
+    if getattr(w, 'col', None) is None or isinstance(w, SyntaxError):
         # without column information, just highlight the whole line
         # (minus the newline)
         vim.command(r"let s:mID = matchadd('PyFlakes', '\%" + str(w.lineno) + r"l\n\@!')")

@@ -84,3 +84,12 @@ snippet ifmain
 # __magic__
 snippet _
 	__${1:init}__${2}
+
+snippet pdb
+	import pdb; pdb.set_trace()
+
+snippet pp Pretty Print
+	from pprint import pprint; pprint(${1})
+
+snippet clog Class logger
+	self.__class__.LOG.${1:debug}("${2}")
