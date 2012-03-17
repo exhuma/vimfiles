@@ -73,10 +73,6 @@ else
 
 endif " has("autocmd") }}}
 
-" Set a decent text width. This makes printouts cleaner, and makes it easier
-" to read the files on an 80-column screen (f. ex. a server monitor)
-set textwidth=78
-
 " Enable 256 color support on all terminals. This makes it actually feasible
 " to enable 'cursorline' and also allows me to use less obtrusive colors for
 " othe elements (like 'colorcolumn')
@@ -240,6 +236,21 @@ vnoremap <F12> xp`[V`]
 " ----------------------------------------------------------------------------
 let g:xml_syntax_folding=1
 au FileType xml setlocal foldmethod=syntax
+
+"
+" Plugin settings
+" ----------------------------------------------------------------------------
+" ## SuperTab ##{{{##
+"let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+"let g:SuperTabMappingForward = '<c-nul>'
+"let g:SuperTabMappingBackward = '<s-c-nul>'
+" ## }}} ##
+" ## ZenCoding ## {{{ ##
+let g:user_zen_leader_key = '<c-z>'
+let g:user_zen_settings = {
+\  'indentation' : '    '
+\}
+" ## }}} ##
 
 "
 " Disable some features on large files
