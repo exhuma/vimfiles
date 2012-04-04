@@ -30,7 +30,7 @@ endif
 hi Boolean         guifg=#AE81FF
 hi Character       guifg=#E6DB74
 hi Number          guifg=#AE81FF
-hi String          guifg=#E6DB74
+hi String          guifg=#E6DB74 guibg=#000000
 hi Conditional     guifg=#F92672               gui=bold
 hi Constant        guifg=#AE81FF               gui=bold
 hi Cursor          guifg=#000000 guibg=#F8F8F0
@@ -126,6 +126,9 @@ end
 " Support for 256-color terminal
 "
 if &t_Co > 255
+   if has("spell")
+      hi SpellBad     ctermbg=88
+   endif
    hi Boolean         ctermfg=135
    hi Character       ctermfg=144
    hi Number          ctermfg=135
