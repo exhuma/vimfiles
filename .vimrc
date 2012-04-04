@@ -13,14 +13,17 @@ endif
 call vundle#rc()
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-fugitive'
+Bundle 'nvie/vim-flake8'
 Bundle 'ervandew/supertab'
 Bundle 'taglist.vim'
 Bundle 'TaskList.vim'
 Bundle 'pythoncomplete'
+Bundle 'python.vim'
 Bundle 'gitv'
 Bundle 'ZenCoding.vim'
 Bundle 'vim-coffee-script'
 Bundle 'ctrlp.vim'
+Bundle 'surround.vim'
 
 if has("vms")     "{{{ Stuff from stack.nl (see bottom of file)
   set nobackup    " do not keep a backup file, use versions instead
@@ -274,12 +277,9 @@ noremap <F4> :silent !/usr/bin/konsole --workdir :pwd<CR>
 nnoremap <silent> <F8> :TlistToggle<CR>
 " quickly clear the search string (to clear highlights)
 nnoremap <leader><space> :noh<CR>
-" Bubble single lines
-nnoremap <F11> ddkP
-nnoremap <F12> ddp
 " Bubble visual selection
-vnoremap <F11> xkP`[V`]
-vnoremap <F12> xp`[V`]
+vnoremap <C-Up> xkP`[V`]
+vnoremap <C-Down> xp`[V`]
 
 "
 " Settings for specific file types (shouldn't this go to ftplugin?)
@@ -323,6 +323,11 @@ if !exists("my_auto_commands_loaded")
       autocmd BufReadPre * let f=expand("<afile>") | if getfsize(f) > g:LargeFile | set eventignore+=FileType | setlocal noswapfile bufhidden=unload buftype=nowrite undolevels=-1 | else | set eventignore-=FileType | endif
    augroup END
 endif
+
+" Display the highlight group under the cursor
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+    \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+    \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " EOF... sort of ;)
 " this file is based on http://www.stack.nl/~wjmb/stuff/dotfiles/vimrc.htm
