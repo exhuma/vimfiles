@@ -21,6 +21,7 @@ Bundle 'gitv'
 Bundle 'ZenCoding.vim'
 Bundle 'vim-coffee-script'
 Bundle 'ctrlp.vim'
+Bundle 'Syntastic'
 
 if has("vms")     "{{{ Stuff from stack.nl (see bottom of file)
   set nobackup    " do not keep a backup file, use versions instead
@@ -300,6 +301,10 @@ let g:user_zen_leader_key = '<c-z>'
 let g:user_zen_settings = {
 \  'indentation' : '    '
 \}
+" ## }}} ##
+" ## Syntastic ## {{{ ##
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=1
 " ## }}} ##
 
 "
