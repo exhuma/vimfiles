@@ -60,13 +60,6 @@ function! GetPythonFold(lnum)
 	return '='
     endif
 
-    " Support markers
-    if line =~ '{{{'
-	return "a1"
-    elseif line =~ '}}}'
-	return "s1"
-    endif
-
     " Classes and functions get their own folds
     if line =~ '^\s*\(class\|def\)\s'
 	return ">" . (ind / &sw + 1)
