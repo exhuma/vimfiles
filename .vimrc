@@ -13,7 +13,6 @@ endif
 call vundle#rc()
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-fugitive'
-Bundle 'nvie/vim-flake8'
 Bundle 'ervandew/supertab'
 Bundle 'taglist.vim'
 Bundle 'TaskList.vim'
@@ -24,6 +23,9 @@ Bundle 'ZenCoding.vim'
 Bundle 'vim-coffee-script'
 Bundle 'ctrlp.vim'
 Bundle 'surround.vim'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'Syntastic'
+Bundle 'vim-soy'
 
 if has("vms")     "{{{ Stuff from stack.nl (see bottom of file)
   set nobackup    " do not keep a backup file, use versions instead
