@@ -301,6 +301,25 @@ let g:user_zen_settings = {
 \  'indentation' : '    '
 \}
 " ## }}} ##
+" ## CtrlP ## {{{ ##
+let g:path_to_matcher = "/path/to/matcher"
+
+let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files']
+"let g:ctrlp_user_command = {
+"  \ 'types': {
+"    \ 1: ['.git/', 'cd %s && git ls-files'],
+"    \ },
+"  \ 'fallback': 'find %s -type f'
+"  \ }
+let g:ctrlp_working_path_mode = 2
+" ## }}} ##
+" ## SQL ## {{{ ##
+let g:sql_type_default = 'pgsql'
+let g:omni_sql_no_default_maps = 1
+" ## }}} ##
+" ## PHP ## {{{ ##
+let php_folding = 1
+" ## }}} ##
 
 "
 " Disable some features on large files
