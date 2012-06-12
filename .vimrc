@@ -182,7 +182,8 @@ set ruler                        " show the cursor position all the time
 set showcmd                      " display incomplete commands
 set scrolloff=7                  " Keep a 7-lines 'lookahead' when scrolling
 set wildmenu                     " Show auto-complete matches
-set wildignore=*.bdb,*.msu,*.bfi,*.bjk,*.bpk,*.bdm,*.bfm,*.bxi,*.bmi,*.msx,*.lnk,*~,*.bak
+set wildignore=*.lnk,*~,*.bak,*.pyc
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
 " TODO: enable the git statusline *only* if fugitive is properly installed
 " set statusline=%<%f%m%r\ %{fugitive#statusline()}%=\|\ Dec:\ %-3b\ Hex:\ 0x%2B\ \|\ %20(%4l,%4c%V\ \|\ %3P%)
 
