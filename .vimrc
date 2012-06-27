@@ -26,6 +26,7 @@ Bundle 'surround.vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'Syntastic'
 Bundle 'vim-soy'
+Bundle 'NrrwRgn'
 
 if has("vms")     "{{{ Stuff from stack.nl (see bottom of file)
   set nobackup    " do not keep a backup file, use versions instead
@@ -72,7 +73,7 @@ if has("autocmd")
     \   exe "normal g`\"" |
     \ endif
 
-  autocmd FileType python set formatoptions=qorac textwidth=78
+  autocmd FileType python setlocal formatoptions=qorac textwidth=78
 
   augroup END
 
