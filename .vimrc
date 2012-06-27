@@ -5,12 +5,13 @@ set nocompatible           " Behave like vim and not like vi!
 " ----------------------------------------------------------------------------
 filetype off
 if has("win16") || has("win32") || has("win64")|| has("win95")
-    set rtp+=~/vimfiles/vundle.git/
+    set rtp+=~/vimfiles/bundle/vundle/
 else
-    set rtp+=~/.vim/vundle.git/
+    set rtp+=~/.vim/bundle/vundle/
 endif
 
 call vundle#rc()
+Bundle 'gmarik/vundle'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-fugitive'
 Bundle 'ervandew/supertab'
