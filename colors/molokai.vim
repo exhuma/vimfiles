@@ -126,6 +126,9 @@ end
 " Support for 256-color terminal
 "
 if &t_Co > 255
+   if has("spell")
+      hi SpellBad     ctermbg=88
+   endif
    hi Boolean         ctermfg=135
    hi Character       ctermfg=144
    hi Number          ctermfg=135
@@ -159,7 +162,7 @@ if &t_Co > 255
    hi Macro           ctermfg=193
    hi SpecialKey      ctermfg=81
 
-   hi MatchParen      ctermfg=16  ctermbg=208 cterm=bold
+   hi MatchParen      ctermfg=16  ctermbg=208 cterm=bold,reverse
    hi ModeMsg         ctermfg=229
    hi MoreMsg         ctermfg=229
    hi Operator        ctermfg=161

@@ -96,3 +96,6 @@ snippet pydis disable pylint code
 
 snippet pyen enable pylint code
 	# pylint: enable=${1}
+
+snippet clog Class logger
+	self.__class__.LOG.${1:debug}("${2}")

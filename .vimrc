@@ -5,22 +5,29 @@ set nocompatible           " Behave like vim and not like vi!
 " ----------------------------------------------------------------------------
 filetype off
 if has("win16") || has("win32") || has("win64")|| has("win95")
-    set rtp+=~/vimfiles/vundle.git/
+    set rtp+=~/vimfiles/bundle/vundle/
 else
-    set rtp+=~/.vim/vundle.git/
+    set rtp+=~/.vim/bundle/vundle/
 endif
 
 call vundle#rc()
+Bundle 'gmarik/vundle'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-fugitive'
 Bundle 'ervandew/supertab'
 Bundle 'taglist.vim'
 Bundle 'TaskList.vim'
 Bundle 'pythoncomplete'
+Bundle 'python.vim'
 Bundle 'gitv'
 Bundle 'ZenCoding.vim'
 Bundle 'vim-coffee-script'
 Bundle 'ctrlp.vim'
+Bundle 'surround.vim'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'Syntastic'
+Bundle 'vim-soy'
+Bundle 'NrrwRgn'
 
 if has("vms")     "{{{ Stuff from stack.nl (see bottom of file)
   set nobackup    " do not keep a backup file, use versions instead
@@ -66,6 +73,8 @@ if has("autocmd")
     \ if line("'\"") > 0 && line("'\"") <= line("$") |
     \   exe "normal g`\"" |
     \ endif
+
+  autocmd FileType python setlocal formatoptions=qorac textwidth=78
 
   augroup END
 
@@ -135,6 +144,8 @@ set foldcolumn=5                 " display up to 4 folds
 set nowrap                       " Prevent wrapping
 colorscheme molokai
 set background=dark
+set winheight=40
+set winwidth=80
 
 " Use a less intrusive color for the color column (It's not linked in
 " the 'molokai' colorscheme as of this writing)
@@ -173,7 +184,8 @@ set ruler                        " show the cursor position all the time
 set showcmd                      " display incomplete commands
 set scrolloff=7                  " Keep a 7-lines 'lookahead' when scrolling
 set wildmenu                     " Show auto-complete matches
-set wildignore=*.bdb,*.msu,*.bfi,*.bjk,*.bpk,*.bdm,*.bfm,*.bxi,*.bmi,*.msx,*.lnk,*~,*.bak
+set wildignore=*.lnk,*~,*.bak,*.pyc
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
 " TODO: enable the git statusline *only* if fugitive is properly installed
 " set statusline=%<%f%m%r\ %{fugitive#statusline()}%=\|\ Dec:\ %-3b\ Hex:\ 0x%2B\ \|\ %20(%4l,%4c%V\ \|\ %3P%)
 
@@ -209,9 +221,9 @@ function! RenderStlFlag(value, goodValues, error)
 endfunction " }}}
 
 set statusline=
-set statusline+=%n   " Buffer number
+set statusline+=%2.3n   " Buffer number
 set statusline+=\ %< " Truncate here
-set statusline+=%f   " The filename
+set statusline+=%#Todo#\|%f\|%*   " The filename
 set statusline+=\ %y " filetype
 call AddStatuslineFlag('&ff', 'unix')    "fileformat
 call AddStatuslineFlag('&fenc', 'utf-8') "file encoding
@@ -270,18 +282,49 @@ noremap <F4> :silent !/usr/bin/konsole --workdir :pwd<CR>
 nnoremap <silent> <F8> :TlistToggle<CR>
 " quickly clear the search string (to clear highlights)
 nnoremap <leader><space> :noh<CR>
-" Bubble single lines
-nnoremap <F11> ddkP
-nnoremap <F12> ddp
 " Bubble visual selection
-vnoremap <F11> xkP`[V`]
-vnoremap <F12> xp`[V`]
+vnoremap <C-Up> xkP`[V`]
+vnoremap <C-Down> xp`[V`]
 
 "
 " Settings for specific file types (shouldn't this go to ftplugin?)
 " ----------------------------------------------------------------------------
 let g:xml_syntax_folding=1
 au FileType xml setlocal foldmethod=syntax
+
+"
+" Plugin settings
+" ----------------------------------------------------------------------------
+" ## SuperTab ##{{{##
+"let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+"let g:SuperTabMappingForward = '<c-nul>'
+"let g:SuperTabMappingBackward = '<s-c-nul>'
+" ## }}} ##
+" ## ZenCoding ## {{{ ##
+let g:user_zen_leader_key = '<c-z>'
+let g:user_zen_settings = {
+\  'indentation' : '    '
+\}
+" ## }}} ##
+" ## CtrlP ## {{{ ##
+let g:path_to_matcher = "/path/to/matcher"
+
+let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files']
+"let g:ctrlp_user_command = {
+"  \ 'types': {
+"    \ 1: ['.git/', 'cd %s && git ls-files'],
+"    \ },
+"  \ 'fallback': 'find %s -type f'
+"  \ }
+let g:ctrlp_working_path_mode = 2
+" ## }}} ##
+" ## SQL ## {{{ ##
+let g:sql_type_default = 'pgsql'
+let g:omni_sql_no_default_maps = 1
+" ## }}} ##
+" ## PHP ## {{{ ##
+let php_folding = 1
+" ## }}} ##
 
 "
 " Disable some features on large files
@@ -304,6 +347,11 @@ if !exists("my_auto_commands_loaded")
       autocmd BufReadPre * let f=expand("<afile>") | if getfsize(f) > g:LargeFile | set eventignore+=FileType | setlocal noswapfile bufhidden=unload buftype=nowrite undolevels=-1 | else | set eventignore-=FileType | endif
    augroup END
 endif
+
+" Display the highlight group under the cursor
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+    \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+    \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " EOF... sort of ;)
 " this file is based on http://www.stack.nl/~wjmb/stuff/dotfiles/vimrc.htm
