@@ -328,6 +328,9 @@ let g:omni_sql_no_default_maps = 1
 " ## PHP ## {{{ ##
 let php_folding = 1
 " ## }}} ##
+" ## Powerline ## {{{ ##
+let g:Powerline_symbols = 'fancy'
+" ## }}} ##
 
 "
 " Disable some features on large files
