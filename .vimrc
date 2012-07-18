@@ -163,6 +163,7 @@ nnoremap * *zz
 nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
+noremap <F2> :set paste!<CR>
 
 " Switch to previous/next buffer
 nnoremap <kMinus>  :bprevious<CR>
