@@ -51,6 +51,8 @@ set hlsearch
 set incsearch
 set showmatch
 
+set textwidth=78
+
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
 
@@ -85,7 +87,7 @@ endif " has("autocmd") }}}
 
 " Enable 256 color support on all terminals. This makes it actually feasible
 " to enable 'cursorline' and also allows me to use less obtrusive colors for
-" othe elements (like 'colorcolumn')
+" other elements (like 'colorcolumn')
 set t_Co=256
 
 if v:version >= 700
@@ -95,7 +97,7 @@ endif
 
 if v:version >= 703
    " Highlight the column where the text should wrap
-   exec printf("set colorcolumn=%d", &textwidth+1)
+   set colorcolumn=+1
 
    " keep a file containing undo info. So you can undo even after closing the
    " file
@@ -162,6 +164,7 @@ nnoremap * *zz
 nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
+noremap <F2> :set paste!<CR>
 
 nnoremap <F3> :execute PasteModeToggle()<CR>
 
@@ -328,6 +331,9 @@ let g:omni_sql_no_default_maps = 1
 " ## }}} ##
 " ## PHP ## {{{ ##
 let php_folding = 1
+" ## }}} ##
+" ## Powerline ## {{{ ##
+let g:Powerline_symbols = 'fancy'
 " ## }}} ##
 
 "
