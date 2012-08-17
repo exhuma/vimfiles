@@ -163,6 +163,8 @@ nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
 
+nnoremap <F3> :execute PasteModeToggle()<CR>
+
 " Switch to previous/next buffer
 nnoremap <kMinus>  :bprevious<CR>
 nnoremap <kPlus>   :bnext<CR>
@@ -186,7 +188,8 @@ set showcmd                      " display incomplete commands
 set scrolloff=7                  " Keep a 7-lines 'lookahead' when scrolling
 set wildmenu                     " Show auto-complete matches
 set wildignore=*.lnk,*~,*.bak,*.pyc
-set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
+"set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
+set wildignore+=*/.hg/*,*/.svn/*
 " TODO: enable the git statusline *only* if fugitive is properly installed
 " set statusline=%<%f%m%r\ %{fugitive#statusline()}%=\|\ Dec:\ %-3b\ Hex:\ 0x%2B\ \|\ %20(%4l,%4c%V\ \|\ %3P%)
 
@@ -308,7 +311,7 @@ let g:user_zen_settings = {
 \}
 " ## }}} ##
 " ## CtrlP ## {{{ ##
-let g:path_to_matcher = "/path/to/matcher"
+"let g:path_to_matcher = "/path/to/matcher"
 
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files']
 "let g:ctrlp_user_command = {
@@ -353,6 +356,20 @@ endif
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
     \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
     \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+
+"
+" Function to toggle fold-column
+"
+function! PasteModeToggle()
+    if &foldcolumn
+        setlocal foldcolumn=0
+        setlocal paste
+    else
+        setlocal foldcolumn=5
+        setlocal nopaste
+    endif
+endfunction
 
 " EOF... sort of ;)
 " this file is based on http://www.stack.nl/~wjmb/stuff/dotfiles/vimrc.htm
