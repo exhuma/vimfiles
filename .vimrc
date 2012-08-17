@@ -17,7 +17,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'ervandew/supertab'
 Bundle 'taglist.vim'
 Bundle 'TaskList.vim'
-Bundle 'pythoncomplete'
+"Bundle 'pythoncomplete'
 Bundle 'python.vim'
 Bundle 'gitv'
 Bundle 'ZenCoding.vim'
@@ -28,6 +28,7 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'Syntastic'
 Bundle 'vim-soy'
 Bundle 'NrrwRgn'
+Bundle 'unimpaired.vim'
 
 if has("vms")     "{{{ Stuff from stack.nl (see bottom of file)
   set nobackup    " do not keep a backup file, use versions instead
