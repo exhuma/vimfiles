@@ -1,7 +1,6 @@
 set nocompatible           " Behave like vim and not like vi!
 
-"
-" vundle (https://github.com/gmarik/vundle) settings
+" vundle (https://github.com/gmarik/vundle) settings {{{
 " ----------------------------------------------------------------------------
 filetype off
 if has("win16") || has("win32") || has("win64")|| has("win95")
@@ -27,6 +26,8 @@ Bundle 'unimpaired.vim'
 Bundle 'alfredodeza/khuno.vim'
 Bundle 'wombat256.vim'
 Bundle 'python.vim'
+
+" }}}
 
 if has("vms")     "{{{ Stuff from stack.nl (see bottom of file)
   set nobackup    " do not keep a backup file, use versions instead
@@ -158,7 +159,7 @@ nnoremap * *zz
 nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
-noremap <F2> :set paste!<CR>
+inoremap jj <Esc>
 
 nnoremap <F3> :execute PasteModeToggle()<CR>
 
