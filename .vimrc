@@ -16,19 +16,17 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-fugitive'
 Bundle 'ervandew/supertab'
 Bundle 'taglist.vim'
-Bundle 'TaskList.vim'
-"Bundle 'pythoncomplete'
-Bundle 'python.vim'
 Bundle 'gitv'
 Bundle 'ZenCoding.vim'
-Bundle 'vim-coffee-script'
 Bundle 'ctrlp.vim'
 Bundle 'surround.vim'
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'Syntastic'
 Bundle 'vim-soy'
 Bundle 'NrrwRgn'
 Bundle 'unimpaired.vim'
+Bundle 'alfredodeza/khuno.vim'
+Bundle 'wombat256.vim'
+Bundle 'python.vim'
 
 if has("vms")     "{{{ Stuff from stack.nl (see bottom of file)
   set nobackup    " do not keep a backup file, use versions instead
@@ -330,6 +328,9 @@ let php_folding = 1
 " ## }}} ##
 " ## Powerline ## {{{ ##
 let g:Powerline_symbols = 'fancy'
+" ## }}} ##
+" ## python.vim ## {{{ ##
+let python_highlight_all = 1
 " ## }}} ##
 
 "
