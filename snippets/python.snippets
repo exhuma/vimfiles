@@ -33,14 +33,6 @@ snippet deff
 snippet defs
 	def ${1:mname}(self, ${2:arg}):
 		${3:pass}
-# New Property
-snippet property
-	def ${1:foo}():
-		doc = "${2:The $1 property.}"
-		def fget(self):
-			${3:return self._$1}
-		def fset(self, value):
-			${4:self._$1 = value}
 # Lambda
 snippet ld
 	${1:var} = lambda ${2:vars} : ${3:action}
