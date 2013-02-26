@@ -178,10 +178,15 @@ nnoremap <C-Down>  :cnext<CR>
 nnoremap j gj
 nnoremap k gk
 
+" Fix to make <C-PageUp/Down> work in tmux
+nnoremap [5^ :tabprev<CR>
+nnoremap [6^ :tabnext<CR>
+
 set backspace=indent,eol,start   " allow backspacing over everything in insert mode
 set history=50                   " keep 50 lines of command line history
 set ruler                        " show the cursor position all the time
 set showcmd                      " display incomplete commands
+set cmdheight=2
 set scrolloff=7                  " Keep a 7-lines 'lookahead' when scrolling
 set wildmenu                     " Show auto-complete matches
 set wildignore=*.lnk,*~,*.bak,*.pyc
@@ -286,6 +291,11 @@ nnoremap <leader><space> :noh<CR>
 " Bubble visual selection
 vnoremap <C-Up> xkP`[V`]
 vnoremap <C-Down> xp`[V`]
+vnoremap ?? <Esc>:exec
+ \ ':!sensible-browser http://www.google.com/search?q="'
+ \ . substitute(@*,'\W\+\\|\<\w\>'," ","g")
+ \ . '"'<CR><CR>
+
 
 "
 " Settings for specific file types (shouldn't this go to ftplugin?)
