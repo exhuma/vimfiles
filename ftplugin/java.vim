@@ -29,3 +29,12 @@ nnoremap <F6> 0WWWyemt`aoI	 public static final String PROP_pbgUEA = "pA";`t
 "    - press n
 "    - repeat "F7", "n" as necessary
 nnoremap <F7> w"syeww"tyew"nyeo "tpA "npbioldlgUlA = Athis."npA;jopropertyChangeSupport.firePropertyChange(PROP_"npbgUeA, old"npblllgUlA, "npA);
+
+" Automatically insert an appropriate logger for the current class.
+" Simply position the cursor somewhere *inside* the class and press F8.
+"
+" NOTE: This does a backwards search for the word "class". If that is not the
+" class definition, this will do some unexpected magic!
+nnoremap <F8> ?class<CR>wye<C-o>oprivate static final Logger LOG = Logger.getLogger(<CR><ESC>pA.class.getCanonicalName());<ESC>?^import<CR>oimport java.util.logging.Logger;<ESC>V{j:sort<CR><C-o><C-o>:noh<CR>==
+
+set foldmethod=syntax
