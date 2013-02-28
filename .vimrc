@@ -161,6 +161,7 @@ nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
 noremap <F2> :set paste!<CR>
+inoremap jj <Esc>
 
 nnoremap <F3> :execute PasteModeToggle()<CR>
 
