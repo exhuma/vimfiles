@@ -122,6 +122,8 @@ else
    hi NonText         guifg=#BCBCBC guibg=#232526
 end
 
+hi ColorColmn guibg=#000000
+
 "
 " Support for 256-color terminal
 "
