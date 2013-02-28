@@ -10,3 +10,6 @@ endif
 
 " Remove toolbar
 set guioptions-=T
+
+"colorscheme wombat256mod
+colorscheme jellybeans

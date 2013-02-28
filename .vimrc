@@ -1,7 +1,6 @@
 set nocompatible           " Behave like vim and not like vi!
 
-"
-" vundle (https://github.com/gmarik/vundle) settings
+" vundle (https://github.com/gmarik/vundle) settings {{{
 " ----------------------------------------------------------------------------
 filetype off
 if has("win16") || has("win32") || has("win64")|| has("win95")
@@ -16,19 +15,19 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-fugitive'
 Bundle 'ervandew/supertab'
 Bundle 'taglist.vim'
-Bundle 'TaskList.vim'
-"Bundle 'pythoncomplete'
-Bundle 'python.vim'
 Bundle 'gitv'
 Bundle 'ZenCoding.vim'
-Bundle 'vim-coffee-script'
 Bundle 'ctrlp.vim'
 Bundle 'surround.vim'
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'Syntastic'
 Bundle 'vim-soy'
 Bundle 'NrrwRgn'
 Bundle 'unimpaired.vim'
+Bundle 'alfredodeza/khuno.vim'
+Bundle 'wombat256.vim'
+Bundle 'python.vim'
+
+" }}}
 
 if has("vms")     "{{{ Stuff from stack.nl (see bottom of file)
   set nobackup    " do not keep a backup file, use versions instead
@@ -160,7 +159,6 @@ nnoremap * *zz
 nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
-noremap <F2> :set paste!<CR>
 inoremap jj <Esc>
 
 nnoremap <F3> :execute PasteModeToggle()<CR>
@@ -181,10 +179,15 @@ nnoremap <C-Down>  :cnext<CR>
 nnoremap j gj
 nnoremap k gk
 
+" Fix to make <C-PageUp/Down> work in tmux
+nnoremap [5^ :tabprev<CR>
+nnoremap [6^ :tabnext<CR>
+
 set backspace=indent,eol,start   " allow backspacing over everything in insert mode
 set history=50                   " keep 50 lines of command line history
 set ruler                        " show the cursor position all the time
 set showcmd                      " display incomplete commands
+set cmdheight=2
 set scrolloff=7                  " Keep a 7-lines 'lookahead' when scrolling
 set wildmenu                     " Show auto-complete matches
 set wildignore=*.lnk,*~,*.bak,*.pyc
@@ -289,6 +292,11 @@ nnoremap <leader><space> :noh<CR>
 " Bubble visual selection
 vnoremap <C-Up> xkP`[V`]
 vnoremap <C-Down> xp`[V`]
+vnoremap ?? <Esc>:exec
+ \ ':!sensible-browser http://www.google.com/search?q="'
+ \ . substitute(@*,'\W\+\\|\<\w\>'," ","g")
+ \ . '"'<CR><CR>
+
 
 "
 " Settings for specific file types (shouldn't this go to ftplugin?)
@@ -331,6 +339,9 @@ let php_folding = 1
 " ## }}} ##
 " ## Powerline ## {{{ ##
 let g:Powerline_symbols = 'fancy'
+" ## }}} ##
+" ## python.vim ## {{{ ##
+let python_highlight_all = 1
 " ## }}} ##
 
 "

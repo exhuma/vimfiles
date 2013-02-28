@@ -76,3 +76,11 @@ snippet cos
 	static public final String ${1:var} = "${2}";${3}
 snippet as
 	assert ${1:test} : "${2:Failure message}";${3}
+snippet logc
+	LOG.critical(String.format("${1}"${2}));
+snippet logw
+	LOG.warning(String.format("${1}"${2}));
+snippet logf
+	LOG.fine(String.format("${1}"${2}));
+snippet logs
+	LOG.finest(String.format("${1}"${2}));
