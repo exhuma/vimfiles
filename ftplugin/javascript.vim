@@ -34,3 +34,7 @@ set foldmethod=syntax
 " Adhering to google code style
 set tabstop=2
 set shiftwidth=2
+
+" some google-closure mappings
+vmap <F2> <ESC>`>a)<ESC>`<igoog.debug.expose(<ESC>
+vmap <S-F2> <ESC>`>a)<ESC>`<igoog.debug.deepExpose(<ESC>

@@ -1,30 +1,34 @@
 set nocompatible           " Behave like vim and not like vi!
 
-"
-" vundle (https://github.com/gmarik/vundle) settings
+" vundle (https://github.com/gmarik/vundle) settings {{{
 " ----------------------------------------------------------------------------
 filetype off
 if has("win16") || has("win32") || has("win64")|| has("win95")
-    set rtp+=~/vimfiles/vundle.git/
+    set rtp+=~/vimfiles/bundle/vundle/
 else
-    set rtp+=~/.vim/vundle.git/
+    set rtp+=~/.vim/bundle/vundle/
 endif
 
 call vundle#rc()
+Bundle 'gmarik/vundle'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-fugitive'
-Bundle 'nvie/vim-flake8'
 Bundle 'ervandew/supertab'
 Bundle 'taglist.vim'
-Bundle 'TaskList.vim'
-Bundle 'pythoncomplete'
-Bundle 'python.vim'
 Bundle 'gitv'
 Bundle 'ZenCoding.vim'
-Bundle 'vim-coffee-script'
 Bundle 'ctrlp.vim'
 Bundle 'Syntastic'
 Bundle 'surround.vim'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'vim-soy'
+Bundle 'NrrwRgn'
+Bundle 'unimpaired.vim'
+Bundle 'alfredodeza/khuno.vim'
+Bundle 'wombat256.vim'
+Bundle 'python.vim'
+
+" }}}
 
 if has("vms")     "{{{ Stuff from stack.nl (see bottom of file)
   set nobackup    " do not keep a backup file, use versions instead
@@ -46,6 +50,8 @@ syntax on
 set hlsearch
 set incsearch
 set showmatch
+
+set textwidth=78
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -71,8 +77,6 @@ if has("autocmd")
     \   exe "normal g`\"" |
     \ endif
 
-  autocmd FileType python set formatoptions=qorac textwidth=78
-
   augroup END
 
 else
@@ -81,7 +85,7 @@ endif " has("autocmd") }}}
 
 " Enable 256 color support on all terminals. This makes it actually feasible
 " to enable 'cursorline' and also allows me to use less obtrusive colors for
-" othe elements (like 'colorcolumn')
+" other elements (like 'colorcolumn')
 set t_Co=256
 
 if v:version >= 700
@@ -91,7 +95,7 @@ endif
 
 if v:version >= 703
    " Highlight the column where the text should wrap
-   exec printf("set colorcolumn=%d", &textwidth+1)
+   set colorcolumn=+1
 
    " keep a file containing undo info. So you can undo even after closing the
    " file
@@ -141,8 +145,6 @@ set foldcolumn=5                 " display up to 4 folds
 set nowrap                       " Prevent wrapping
 colorscheme molokai
 set background=dark
-set winheight=40
-set winwidth=80
 
 " Use a less intrusive color for the color column (It's not linked in
 " the 'molokai' colorscheme as of this writing)
@@ -158,6 +160,9 @@ nnoremap * *zz
 nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
+inoremap jj <Esc>
+
+nnoremap <F3> :execute PasteModeToggle()<CR>
 
 " Switch to previous/next buffer
 nnoremap <kMinus>  :bprevious<CR>
@@ -175,13 +180,20 @@ nnoremap <C-Down>  :cnext<CR>
 nnoremap j gj
 nnoremap k gk
 
+" Fix to make <C-PageUp/Down> work in tmux
+nnoremap [5^ :tabprev<CR>
+nnoremap [6^ :tabnext<CR>
+
 set backspace=indent,eol,start   " allow backspacing over everything in insert mode
 set history=50                   " keep 50 lines of command line history
 set ruler                        " show the cursor position all the time
 set showcmd                      " display incomplete commands
+set cmdheight=2
 set scrolloff=7                  " Keep a 7-lines 'lookahead' when scrolling
 set wildmenu                     " Show auto-complete matches
-set wildignore=*.bdb,*.msu,*.bfi,*.bjk,*.bpk,*.bdm,*.bfm,*.bxi,*.bmi,*.msx,*.lnk,*~,*.bak
+set wildignore=*.lnk,*~,*.bak,*.pyc
+"set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
+set wildignore+=*/.hg/*,*/.svn/*
 " TODO: enable the git statusline *only* if fugitive is properly installed
 " set statusline=%<%f%m%r\ %{fugitive#statusline()}%=\|\ Dec:\ %-3b\ Hex:\ 0x%2B\ \|\ %20(%4l,%4c%V\ \|\ %3P%)
 
@@ -281,6 +293,11 @@ nnoremap <leader><space> :noh<CR>
 " Bubble visual selection
 vnoremap <C-Up> xkP`[V`]
 vnoremap <C-Down> xp`[V`]
+vnoremap ?? <Esc>:exec
+ \ ':!sensible-browser http://www.google.com/search?q="'
+ \ . substitute(@*,'\W\+\\|\<\w\>'," ","g")
+ \ . '"'<CR><CR>
+
 
 "
 " Settings for specific file types (shouldn't this go to ftplugin?)
@@ -302,9 +319,30 @@ let g:user_zen_settings = {
 \  'indentation' : '    '
 \}
 " ## }}} ##
-" ## Syntastic ## {{{ ##
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=1
+" ## CtrlP ## {{{ ##
+"let g:path_to_matcher = "/path/to/matcher"
+
+let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files']
+"let g:ctrlp_user_command = {
+"  \ 'types': {
+"    \ 1: ['.git/', 'cd %s && git ls-files'],
+"    \ },
+"  \ 'fallback': 'find %s -type f'
+"  \ }
+let g:ctrlp_working_path_mode = 2
+" ## }}} ##
+" ## SQL ## {{{ ##
+let g:sql_type_default = 'pgsql'
+let g:omni_sql_no_default_maps = 1
+" ## }}} ##
+" ## PHP ## {{{ ##
+let php_folding = 1
+" ## }}} ##
+" ## Powerline ## {{{ ##
+let g:Powerline_symbols = 'fancy'
+" ## }}} ##
+" ## python.vim ## {{{ ##
+let python_highlight_all = 1
 " ## }}} ##
 
 "
@@ -333,6 +371,20 @@ endif
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
     \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
     \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+
+"
+" Function to toggle fold-column
+"
+function! PasteModeToggle()
+    if &foldcolumn
+        setlocal foldcolumn=0
+        setlocal paste
+    else
+        setlocal foldcolumn=5
+        setlocal nopaste
+    endif
+endfunction
 
 " EOF... sort of ;)
 " this file is based on http://www.stack.nl/~wjmb/stuff/dotfiles/vimrc.htm
