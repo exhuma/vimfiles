@@ -18,14 +18,12 @@ Bundle 'taglist.vim'
 Bundle 'gitv'
 Bundle 'ZenCoding.vim'
 Bundle 'ctrlp.vim'
-Bundle 'Syntastic'
 Bundle 'surround.vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'vim-soy'
 Bundle 'NrrwRgn'
 Bundle 'unimpaired.vim'
 Bundle 'alfredodeza/khuno.vim'
-Bundle 'wombat256.vim'
 Bundle 'python.vim'
 
 " }}}
@@ -343,6 +341,8 @@ let g:Powerline_symbols = 'fancy'
 " ## }}} ##
 " ## python.vim ## {{{ ##
 let python_highlight_all = 1
+" ## Khuno ## {{{ ##
+let g:khuno_builtins="_,apply"
 " ## }}} ##
 
 "
@@ -351,21 +351,21 @@ let python_highlight_all = 1
 " Protect large files from sourcing and other overhead.
 " Files become read only
 " ----------------------------------------------------------------------------
-if !exists("my_auto_commands_loaded")
-   let my_auto_commands_loaded = 1
-   " Large files are > 10M
-   " Set options:
-   " eventignore+=FileType (no syntax highlighting etc
-   " assumes FileType always on)
-   " noswapfile (save copy of file)
-   " bufhidden=unload (save memory when other file is viewed)
-   " buftype=nowritefile (is read-only)
-   " undolevels=-1 (no undo possible)
-   let g:LargeFile = 1024 * 1024 * 10
-   augroup LargeFile
-      autocmd BufReadPre * let f=expand("<afile>") | if getfsize(f) > g:LargeFile | set eventignore+=FileType | setlocal noswapfile bufhidden=unload buftype=nowrite undolevels=-1 | else | set eventignore-=FileType | endif
-   augroup END
-endif
+"if !exists("my_auto_commands_loaded")
+"   let my_auto_commands_loaded = 1
+"   " Large files are > 10M
+"   " Set options:
+"   " eventignore+=FileType (no syntax highlighting etc
+"   " assumes FileType always on)
+"   " noswapfile (save copy of file)
+"   " bufhidden=unload (save memory when other file is viewed)
+"   " buftype=nowritefile (is read-only)
+"   " undolevels=-1 (no undo possible)
+"   let g:LargeFile = 1024 * 1024 * 10
+"   augroup LargeFile
+"      autocmd BufReadPre * let f=expand("<afile>") | if getfsize(f) > g:LargeFile | set eventignore+=FileType | setlocal noswapfile bufhidden=unload buftype=nowrite undolevels=-1 | else | set eventignore-=FileType | endif
+"   augroup END
+"endif
 
 " Display the highlight group under the cursor
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
