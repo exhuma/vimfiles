@@ -339,8 +339,9 @@ let php_folding = 1
 " ## Powerline ## {{{ ##
 let g:Powerline_symbols = 'fancy'
 " ## }}} ##
-" ## python.vim ## {{{ ##
+"print ## python.vim ## {{{ ##
 let python_highlight_all = 1
+" ## }}} ##
 " ## Khuno ## {{{ ##
 let g:khuno_builtins="_,apply"
 " ## }}} ##
