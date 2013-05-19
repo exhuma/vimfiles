@@ -160,8 +160,6 @@ nnoremap g* g*zz
 nnoremap g# g#zz
 inoremap jj <Esc>
 
-nnoremap <F3> :execute PasteModeToggle()<CR>
-
 " Switch to previous/next buffer
 nnoremap <kMinus>  :bprevious<CR>
 nnoremap <kPlus>   :bnext<CR>
@@ -374,21 +372,9 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
     \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 
-"
-" Function to toggle fold-column
-"
-function! PasteModeToggle()
-    if &foldcolumn
-        setlocal foldcolumn=0
-        setlocal paste
-    else
-        setlocal foldcolumn=5
-        setlocal nopaste
-    endif
-endfunction
-
 " Other hacks
 autocmd! bufwritepost .vimrc source %    " Automatically source .vimrc on write.
+set pastetoggle=<F3>
 
 " EOF... sort of ;)
 " this file is based on http://www.stack.nl/~wjmb/stuff/dotfiles/vimrc.htm
