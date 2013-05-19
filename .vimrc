@@ -25,7 +25,7 @@ Bundle 'NrrwRgn'
 Bundle 'unimpaired.vim'
 Bundle 'alfredodeza/khuno.vim'
 Bundle 'python.vim'
-
+Bundle 'jellybeans.vim'
 " }}}
 
 if has("vms")     "{{{ Stuff from stack.nl (see bottom of file)
