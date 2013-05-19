@@ -44,6 +44,7 @@ Bundle 'surround.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'unimpaired.vim'
 Bundle 'molokai'
+Bundle 'davidhalter/jedi-vim'
 " }}}
 
 " Code quality {{{
@@ -75,7 +76,9 @@ set pastetoggle=<F3>
 set modeline
 set ignorecase
 set smartcase
-
+set hlsearch
+set incsearch
+set showmatch
 
 if has('autocmd')
     autocmd BufReadPost *
@@ -108,6 +111,7 @@ nnoremap k gk
 " }}}
 
 " Mappings {{{
+let mapleader=','
 inoremap jj <Esc>
 nnoremap <leader><space> :noh<CR>
 " }}}
