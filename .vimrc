@@ -386,6 +386,9 @@ function! PasteModeToggle()
     endif
 endfunction
 
+" Other hacks
+autocmd! bufwritepost .vimrc source %    " Automatically source .vimrc on write.
+
 " EOF... sort of ;)
 " this file is based on http://www.stack.nl/~wjmb/stuff/dotfiles/vimrc.htm
 " ... but it's been badly modified since then...
