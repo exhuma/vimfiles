@@ -37,6 +37,7 @@
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'gitv'
 Bundle 'ctrlp.vim'
@@ -45,6 +46,8 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'unimpaired.vim'
 Bundle 'molokai'
 Bundle 'davidhalter/jedi-vim'
+Bundle 'SuperTab-continued.'
+Bundle 'klen/python-mode'
 " }}}
 
 " Code quality {{{
