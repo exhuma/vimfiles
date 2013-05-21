@@ -1,3 +1,2 @@
-bundle
-view/*
-.netrwhist
+/view/*
+/bundle/*
