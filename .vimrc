@@ -48,6 +48,7 @@ Bundle 'molokai'
 Bundle 'davidhalter/jedi-vim'
 Bundle 'SuperTab-continued.'
 Bundle 'klen/python-mode'
+Bundle 'mattn/zencoding-vim'
 " }}}
 
 " Code quality {{{
@@ -82,6 +83,9 @@ set smartcase
 set hlsearch
 set incsearch
 set showmatch
+set ruler
+set showcmd
+set timeout timeoutlen=1000 ttimeoutlen=100
 
 if has('autocmd')
     autocmd BufReadPost *
@@ -99,6 +103,55 @@ if v:version >= 703
    " Highlight the column where the text should wrap
    set colorcolumn=+1
 endif
+
+" Status line {{{
+
+"Add the variable with the name a:varName to the statusline. Highlight it as {{{
+"'error' unless its value is in a:goodValues (a comma separated string)
+function! AddStatuslineFlag(varName, goodValues)
+  set statusline+=[
+  set statusline+=%#error#
+  exec "set statusline+=%{RenderStlFlag(".a:varName.",'".a:goodValues."',1)}"
+  set statusline+=%*
+  exec "set statusline+=%{RenderStlFlag(".a:varName.",'".a:goodValues."',0)}"
+  set statusline+=]
+endfunction " }}}
+
+"returns a:value or '' {{{
+"
+"a:goodValues is a comma separated string of values that shouldn't be
+"highlighted with the error group
+"
+"a:error indicates whether the string that is returned will be highlighted as
+"'error'
+"
+function! RenderStlFlag(value, goodValues, error)
+  let goodValues = split(a:goodValues, ',')
+  let good = index(goodValues, a:value) != -1
+  if (a:error && !good) || (!a:error && good)
+    return a:value
+  else
+    return ''
+  endif
+endfunction " }}}
+
+set statusline=
+set statusline+=%2.3n   " Buffer number
+set statusline+=\ %< " Truncate here
+set statusline+=%#Todo#\|%f\|%*   " The filename
+set statusline+=\ %y " filetype
+call AddStatuslineFlag('&ff', 'unix')    "fileformat
+call AddStatuslineFlag('&fenc', 'utf-8') "file encoding
+set statusline+=\ %m " modified flag
+set statusline+=%r   "
+set statusline+=%=   " Separator
+set statusline+=\|\ Dec:\ %-3b\ Hex:\ 0x%2B " Character byte details
+set statusline+=\ \|\ %20(%4l,%4c%V\ \|\ %3P%) " Cursor position
+
+set laststatus=2                 " Always show the status bar
+
+" }}} End status line
+
 " }}}
 
 " Modified behaviour {{{
@@ -113,18 +166,53 @@ nnoremap j gj
 nnoremap k gk
 " }}}
 
+" Print Settings {{{
+" ----------------------------------------------------------------------------
+set printoptions=header:3,number:y,left:10mm,right:10mm,top:10mm,bottom:10mm
+if has("win32")
+   set printfont=Anonymous_Pro:h10
+elseif has("unix")
+   set printfont=Anonymous\ Pro\ 10
+endif " }}}
+
 " Mappings {{{
 let mapleader=','
 inoremap jj <Esc>
 nnoremap <leader><space> :noh<CR>
+
+" Fix to make <C-PageUp/Down> work in tmux
+nnoremap [5^ :tabprev<CR>
+nnoremap [6^ :tabnext<CR>
+
+" Look up selected phrase in google
+vnoremap ?? <Esc>:exec
+ \ ':!sensible-browser http://www.google.com/search?q="'
+ \ . substitute(@*,'\W\+\\|\<\w\>'," ","g")
+ \ . '"'<CR><CR>
 " }}}
 
 " Plugins {{{
 
 " NERDTree {{{
 let NERDTreeIgnore=['\.exe$', '\.tmp$', '\.pyc',
-         \ '\.sfv$', '\~$' ]
+    \ '\.sfv$', '\~$' ]
 let NERDTreeWinSize=40
+" }}}
+
+" ZenCoding {{{
+let g:user_zen_leader_key = '<c-z>'
+let g:user_zen_settings = {
+    \  'indentation': '  '
+    \}
+" }}}
+
+" CtrlP {{{
+let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files']
+" }}}
+
+" SQL {{{
+let g:sql_type_default = 'pgsql'
+let g:omni_sql_no_default_maps = 1
 " }}}
 
 " }}}
