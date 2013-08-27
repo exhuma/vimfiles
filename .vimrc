@@ -45,10 +45,11 @@ Bundle 'surround.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'unimpaired.vim'
 Bundle 'molokai'
-Bundle 'davidhalter/jedi-vim'
 Bundle 'SuperTab-continued.'
 Bundle 'klen/python-mode'
 Bundle 'mattn/zencoding-vim'
+Bundle 'Jinja'
+Bundle 'NrrwRgn'
 " }}}
 
 " Code quality {{{
