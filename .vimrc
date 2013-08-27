@@ -103,6 +103,8 @@ endif
 if v:version >= 703
    " Highlight the column where the text should wrap
    set colorcolumn=+1
+   hi clear ColorColumn
+   hi link ColorColumn CursorLine
 endif
 
 " Status line {{{
