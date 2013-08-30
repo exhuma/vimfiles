@@ -45,7 +45,6 @@ Bundle 'surround.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'unimpaired.vim'
 Bundle 'molokai'
-Bundle 'davidhalter/jedi-vim'
 Bundle 'SuperTab-continued.'
 Bundle 'klen/python-mode'
 Bundle 'mattn/zencoding-vim'
@@ -204,6 +203,10 @@ let g:user_zen_leader_key = '<c-z>'
 let g:user_zen_settings = {
     \  'indentation': '  '
     \}
+" }}}
+
+" python-mode {{{
+let pymode_lint_checker="pyflakes,pep8,mccabe"
 " }}}
 
 " CtrlP {{{
