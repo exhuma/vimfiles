@@ -207,7 +207,7 @@ let g:user_zen_settings = {
 " }}}
 
 " python-mode {{{
-let pymode_lint_checker="pyflakes,pep8,mccabe"
+let pymode_lint_checker="pylint,pyflakes,pep8,mccabe"
 " }}}
 
 " CtrlP {{{
