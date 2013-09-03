@@ -49,6 +49,9 @@ Bundle 'SuperTab-continued.'
 Bundle 'klen/python-mode'
 Bundle 'mattn/zencoding-vim'
 Bundle 'jelera/vim-javascript-syntax'
+Bundle 'itchyny/lightline.vim'
+Bundle 'Jinja'
+Bundle 'NrrwRgn'
 " }}}
 
 " Code quality {{{
@@ -102,6 +105,8 @@ endif
 if v:version >= 703
    " Highlight the column where the text should wrap
    set colorcolumn=+1
+   hi clear ColorColumn
+   hi link ColorColumn CursorLine
 endif
 
 " Status line {{{
@@ -223,6 +228,25 @@ let g:omni_sql_no_default_maps = 1
 au FileType javascript call JavaScriptFold()
 " }}}
 
+" LightLine {{{
+let g:lightline = {
+    \ 'colorscheme': 'wombat',
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+    \ },
+    \ 'component': {
+    \   'readonly': '%{&readonly?"⭤":""}',
+    \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+    \ },
+    \ 'component_visible_condition': {
+    \   'readonly': '(&filetype!="help"&& &readonly)',
+    \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
+    \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+    \ },
+    \ 'separator': { 'left': '⮀', 'right': '⮂' },
+    \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+    \ }
 " }}}
 
 " vim: set shiftwidth=4 tabstop=4 expandtab:
