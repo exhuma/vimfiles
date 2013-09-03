@@ -48,6 +48,7 @@ Bundle 'molokai'
 Bundle 'SuperTab-continued.'
 Bundle 'klen/python-mode'
 Bundle 'mattn/zencoding-vim'
+Bundle 'jelera/vim-javascript-syntax'
 " }}}
 
 " Code quality {{{
@@ -216,6 +217,10 @@ let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files']
 " SQL {{{
 let g:sql_type_default = 'pgsql'
 let g:omni_sql_no_default_maps = 1
+" }}}
+
+" JavaScriptSyntax {{{
+au FileType javascript call JavaScriptFold()
 " }}}
 
 " }}}
