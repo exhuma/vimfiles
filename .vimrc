@@ -48,6 +48,7 @@ Bundle 'molokai'
 Bundle 'SuperTab-continued.'
 Bundle 'klen/python-mode'
 Bundle 'mattn/zencoding-vim'
+Bundle 'itchyny/lightline.vim'
 Bundle 'Jinja'
 Bundle 'NrrwRgn'
 " }}}
@@ -216,6 +217,27 @@ let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files']
 " SQL {{{
 let g:sql_type_default = 'pgsql'
 let g:omni_sql_no_default_maps = 1
+" }}}
+
+" LightLine {{{
+let g:lightline = {
+    \ 'colorscheme': 'wombat',
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+    \ },
+    \ 'component': {
+    \   'readonly': '%{&readonly?"⭤":""}',
+    \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+    \ },
+    \ 'component_visible_condition': {
+    \   'readonly': '(&filetype!="help"&& &readonly)',
+    \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
+    \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+    \ },
+    \ 'separator': { 'left': '⮀', 'right': '⮂' },
+    \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+    \ }
 " }}}
 
 " }}}
