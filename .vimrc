@@ -52,6 +52,9 @@ Bundle 'jelera/vim-javascript-syntax'
 Bundle 'itchyny/lightline.vim'
 Bundle 'Jinja'
 Bundle 'NrrwRgn'
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle 'garbas/vim-snipmate'
 " }}}
 
 " Code quality {{{
