@@ -1,3 +1,17 @@
 # window['console']['log']
 snippet wclog
 	window['console']['log'](${1:message});
+# goog.require
+snippet greq
+	goog.require('${1:package_name}');
+# goog.provides
+snippet gprov
+	goog.provide('${1:package_name}');
+# goog.dom
+snippet gd
+	goog.dom.${0};
+# goog.events.listen
+snippet listen
+	goog.events.listen(${1:component}, ${2:event}, function(evt) {
+		${5:// body}
+	}, ${3:false}, ${4:this});
