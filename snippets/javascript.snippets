@@ -15,3 +15,11 @@ snippet listen
 	goog.events.listen(${1:component}, ${2:event}, function(evt) {
 		${5:// body}
 	}, ${3:false}, ${4:this});
+# package.name = function() {}
+snippet meth
+	/**
+	 * ${4}
+	 */
+	`substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.${1} = function(${2}) {
+		${3}
+	};
