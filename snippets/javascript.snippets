@@ -15,7 +15,7 @@ snippet listen
 	goog.events.listen(${1:component}, ${2:event}, function(evt) {
 		${5:// body}
 	}, ${3:false}, ${4:this});
-# package.name = function() {}
+# package.prototype.name = function() {}
 snippet meth
 	/**
 	 * ${4}
@@ -23,3 +23,30 @@ snippet meth
 	`substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.${1} = function(${2}) {
 		${3}
 	};
+# package.name = function() {}
+snippet func
+	/**
+	 * ${4}
+	 */
+	`substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.${1} = function(${2}) {
+		${3}
+	};
+# Constructor
+snippet func
+	/**
+	 * ${4}
+	 * @constructor
+	 */
+	`substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.${1} = function(${2}) {
+		${3}
+	};
+# xhr
+snippet xhr
+	goog.net.XhrIo.send(${0:url}, function(evt) {
+		var xhr = evt.target;
+		if (xhr.isSuccess()) {
+			${1}
+		} else {
+			// TODO: show error
+		}
+	});
