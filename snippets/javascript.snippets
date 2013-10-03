@@ -50,3 +50,11 @@ snippet xhr
 			// TODO: show error
 		}
 	});
+snippet log
+	`substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.LOG.${1:fine}(${2});
+snippet makelog
+	/**
+	 * The class logger
+	 */
+	`substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.LOG = goog.debug.Logger.getLogger(
+		'`substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`');
