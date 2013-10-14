@@ -46,7 +46,6 @@ Bundle 'surround.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'unimpaired.vim'
 Bundle 'molokai'
-Bundle 'SuperTab-continued.'
 Bundle 'klen/python-mode'
 Bundle 'mattn/zencoding-vim'
 Bundle 'jelera/vim-javascript-syntax'
@@ -55,7 +54,8 @@ Bundle 'Jinja'
 Bundle 'NrrwRgn'
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
-Bundle 'garbas/vim-snipmate'
+Bundle 'SirVer/ultisnips'
+Bundle 'ervandew/supertab'
 " }}}
 
 " Code quality {{{
@@ -230,6 +230,10 @@ let g:omni_sql_no_default_maps = 1
 
 " JavaScriptSyntax {{{
 au FileType javascript call JavaScriptFold()
+" }}}
+
+" UltiSnips {{{
+let g:UltiSnipsEditSplit = 'vertical'
 " }}}
 
 " LightLine {{{
