@@ -15,14 +15,6 @@ snippet listen
 	goog.events.listen(${1:component}, ${2:event}, function(evt) {
 		${5:// body}
 	});
-# package.prototype.name = function() {}
-snippet meth
-	/**
-	 * ${4}
-	 */
-	`substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.${1} = function(${2}) {
-		${3}
-	};
 # package.name = function() {}
 snippet func
 	/**
@@ -31,13 +23,11 @@ snippet func
 	`substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.${1} = function(${2}) {
 		${3}
 	};
-# Constructor
-snippet func
+snippet meth
 	/**
 	 * ${4}
-	 * @constructor
 	 */
-	`substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.${1} = function(${2}) {
+	`substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.prototype.${1} = function(${2}) {
 		${3}
 	};
 # xhr
