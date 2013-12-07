@@ -34,7 +34,7 @@
 
 
 " Vundle {{{
-filetype off
+filetype off  " See https://github.com/gmarik/vundle/issues/176
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
