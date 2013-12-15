@@ -38,25 +38,24 @@ filetype off  " See https://github.com/gmarik/vundle/issues/176
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-fugitive'
-Bundle 'gitv'
-Bundle 'ctrlp.vim'
-Bundle 'surround.vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'unimpaired.vim'
-Bundle 'molokai'
-Bundle 'klen/python-mode'
-Bundle 'mattn/zencoding-vim'
-Bundle 'jelera/vim-javascript-syntax'
-Bundle 'itchyny/lightline.vim'
-Bundle 'Jinja'
-Bundle 'NrrwRgn'
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
+Bundle 'Jinja'
+Bundle 'NrrwRgn'
 Bundle 'SirVer/ultisnips'
+Bundle 'ctrlp.vim'
 Bundle 'ervandew/supertab'
-" }}}
+Bundle 'gitv'
+Bundle 'gmarik/vundle'
+Bundle 'itchyny/lightline.vim'
+Bundle 'jelera/vim-javascript-syntax'
+Bundle 'klen/python-mode'
+Bundle 'mattn/zencoding-vim'
+Bundle 'molokai'
+Bundle 'scrooloose/nerdtree'
+Bundle 'surround.vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'unimpaired.vim'
 
 " Code quality {{{
 set encoding=utf-8
