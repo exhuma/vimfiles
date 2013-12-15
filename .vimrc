@@ -234,6 +234,7 @@ au FileType javascript call JavaScriptFold()
 
 " UltiSnips {{{
 let g:UltiSnipsEditSplit = 'vertical'
+let g:UltiSnipsNoPythonWarning = 'true'
 " }}}
 
 " LightLine {{{
