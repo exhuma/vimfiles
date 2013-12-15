@@ -68,6 +68,7 @@ set expandtab
 
 " UI style and 'core' behaviour {{{
 filetype plugin indent on
+syntax on
 colorscheme molokai
 set list
 set lcs=tab:├─
