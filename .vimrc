@@ -68,7 +68,7 @@ set expandtab
 " UI style and 'core' behaviour {{{
 filetype plugin indent on
 syntax on
-colorscheme molokai
+colorscheme jellybeans
 set list
 set lcs=tab:├─
 set lcs+=trail:␣
