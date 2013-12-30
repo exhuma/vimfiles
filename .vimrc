@@ -83,6 +83,7 @@ set scrolloff=7
 set wildmenu
 set wildignore=*.lnk,*~,*.bak,*.pyc
 set wildignore+=*/.hg/*,*/.svn/*
+set wildmode=longest:full
 set viminfo=%,'50,<100,n~/.viminfo
 set pastetoggle=<F3>
 set modeline
@@ -259,6 +260,9 @@ let g:lightline = {
     \ }
 " }}}
 
+" SuperTab {{{
+let g:SuperTabLongestEnhanced=1
+" }}}
 " }}}
 
 " vim: set shiftwidth=4 tabstop=4 expandtab:
