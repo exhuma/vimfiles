@@ -56,6 +56,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'surround.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'unimpaired.vim'
+" }}}
 
 " Code quality {{{
 set encoding=utf-8
@@ -256,6 +257,8 @@ let g:lightline = {
     \ 'separator': { 'left': '⮀', 'right': '⮂' },
     \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
     \ }
+" }}}
+
 " }}}
 
 " vim: set shiftwidth=4 tabstop=4 expandtab:
