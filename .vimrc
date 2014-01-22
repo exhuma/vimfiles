@@ -34,28 +34,28 @@
 
 
 " Vundle {{{
-filetype off
+filetype off  " See https://github.com/gmarik/vundle/issues/176
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-fugitive'
-Bundle 'gitv'
-Bundle 'ctrlp.vim'
-Bundle 'surround.vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'unimpaired.vim'
-Bundle 'molokai'
-Bundle 'klen/python-mode'
-Bundle 'mattn/zencoding-vim'
-Bundle 'jelera/vim-javascript-syntax'
-Bundle 'itchyny/lightline.vim'
-Bundle 'Jinja'
-Bundle 'NrrwRgn'
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
+Bundle 'Jinja'
+Bundle 'NrrwRgn'
 Bundle 'SirVer/ultisnips'
+Bundle 'ctrlp.vim'
 Bundle 'ervandew/supertab'
+Bundle 'gitv'
+Bundle 'gmarik/vundle'
+Bundle 'itchyny/lightline.vim'
+Bundle 'jelera/vim-javascript-syntax'
+Bundle 'klen/python-mode'
+Bundle 'mattn/zencoding-vim'
+Bundle 'molokai'
+Bundle 'scrooloose/nerdtree'
+Bundle 'surround.vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'unimpaired.vim'
 " }}}
 
 " Code quality {{{
@@ -69,6 +69,7 @@ set expandtab
 
 " UI style and 'core' behaviour {{{
 filetype plugin indent on
+syntax on
 colorscheme jellybeans
 set list
 set lcs=tab:├─
@@ -83,6 +84,7 @@ set scrolloff=7
 set wildmenu
 set wildignore=*.lnk,*~,*.bak,*.pyc
 set wildignore+=*/.hg/*,*/.svn/*
+set wildmode=longest:full,full
 set viminfo=%,'50,<100,n~/.viminfo
 set pastetoggle=<F3>
 set modeline
@@ -219,10 +221,12 @@ let g:user_zen_settings = {
 
 " python-mode {{{
 let pymode_lint_checker="pylint,pyflakes,pep8,mccabe"
-let g:pymode_virtualenv=1
-let g:pymode_virtualenv_path='env'
 let g:pymode_doc = 0
 let g:pymode_rope_complete_on_dot = 0
+let g:pymode_rope_extended_complete = 1
+let g:pymode_syntax_print_as_function = 1
+let g:pymode_virtualenv = 1
+let g:pymode_virtualenv_path = 'env'
 " }}}
 
 " CtrlP {{{
@@ -240,6 +244,7 @@ au FileType javascript call JavaScriptFold()
 
 " UltiSnips {{{
 let g:UltiSnipsEditSplit = 'vertical'
+let g:UltiSnipsNoPythonWarning = 'true'
 " }}}
 
 " LightLine {{{
@@ -261,6 +266,11 @@ let g:lightline = {
     \ 'separator': { 'left': '⮀', 'right': '⮂' },
     \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
     \ }
+" }}}
+
+" SuperTab {{{
+let g:SuperTabLongestEnhanced=1
+" }}}
 " }}}
 
 " vim: set shiftwidth=4 tabstop=4 expandtab:
