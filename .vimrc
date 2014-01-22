@@ -61,6 +61,7 @@ Bundle 'ervandew/supertab'
 " Code quality {{{
 set encoding=utf-8
 set autoindent
+set shiftround
 set shiftwidth=4
 set tabstop=4
 set expandtab
