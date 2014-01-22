@@ -189,6 +189,7 @@ endif " }}}
 let mapleader=','
 inoremap jj <Esc>
 nnoremap <leader><space> :noh<CR>
+nmap <space> <leader>
 
 " Fix to make <C-PageUp/Down> work in tmux
 nnoremap [5^ :tabprev<CR>
