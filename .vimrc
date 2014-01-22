@@ -83,7 +83,7 @@ set scrolloff=7
 set wildmenu
 set wildignore=*.lnk,*~,*.bak,*.pyc
 set wildignore+=*/.hg/*,*/.svn/*
-set wildmode=longest:full
+set wildmode=longest:full,full
 set viminfo=%,'50,<100,n~/.viminfo
 set pastetoggle=<F3>
 set modeline
