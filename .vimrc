@@ -219,6 +219,10 @@ let g:user_zen_settings = {
 
 " python-mode {{{
 let pymode_lint_checker="pylint,pyflakes,pep8,mccabe"
+let g:pymode_virtualenv=1
+let g:pymode_virtualenv_path='env'
+let g:pymode_doc = 0
+let g:pymode_rope_complete_on_dot = 0
 " }}}
 
 " CtrlP {{{
