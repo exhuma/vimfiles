@@ -50,7 +50,7 @@ Bundle 'gmarik/vundle'
 Bundle 'itchyny/lightline.vim'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'klen/python-mode'
-Bundle 'mattn/zencoding-vim'
+Bundle 'mattn/emmet-vim'
 Bundle 'molokai'
 Bundle 'scrooloose/nerdtree'
 Bundle 'surround.vim'
@@ -210,13 +210,6 @@ vnoremap ?? <Esc>:exec
 let NERDTreeIgnore=['\.exe$', '\.tmp$', '\.pyc',
     \ '\.sfv$', '\~$' ]
 let NERDTreeWinSize=40
-" }}}
-
-" ZenCoding {{{
-let g:user_zen_leader_key = '<c-z>'
-let g:user_zen_settings = {
-    \  'indentation': '  '
-    \}
 " }}}
 
 " python-mode {{{
