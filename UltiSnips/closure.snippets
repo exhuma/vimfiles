@@ -1,3 +1,79 @@
-snippet provides "goog.provides"
+snippet prov "goog.provides" b
 goog.provides('${1}');
+endsnippet
+
+snippet req "goog.require" b
+goog.require('${1:package_name}');
+endsnippet
+
+snippet func "static class function" b
+/**
+ * ${4}
+ */
+`!v substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.${1} = function(${2}) {
+	${3}
+};
+endsnippet
+
+snippet wclog "window.console.log" b
+window['console']['log'](${1:message});
+endsnippet
+
+snippet gd "goog.dom" b
+goog.dom.${0};
+endsnippet
+
+snippet listen "goog.events.listen" b
+goog.events.listen(${1:component}, ${2:event}, function(evt) {
+	${5:// body}
+});
+endsnippet
+
+snippet meth "instance method" b
+/**
+* ${4}
+ `!p
+for i in getArgs(t[2]):
+	snip.rv += "\n\t * @param " + i[1] + " usage..."`
+ */
+`substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.prototype.${1} = function(${2}) {
+	${3}
+};
+endsnippet
+
+snippet func "Constructor" b
+/**
+ * ${4}
+ * @constructor
+ */
+`substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.${1} = function(${2}) {
+	${3}
+};
+endsnippet
+
+snippet xhr "xhr" b
+goog.net.XhrIo.send(${0:url}, function(evt) {
+	var xhr = evt.target;
+	if (xhr.isSuccess()) {
+		${1}
+	} else {
+		// TODO: show error
+	}
+});
+endsnippet
+
+snippet log "Description" b
+
+endsnippet
+
+snippet log "Emit Log Message" b
+`!v substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.LOG.${1:fine}(${2});
+endsnippet
+
+snippet makelog "Create the class logger" b
+/**
+ * The class logger
+ */
+`!v substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.LOG = goog.debug.Logger.getLogger(
+	'!v `substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`');
 endsnippet
