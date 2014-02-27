@@ -1,12 +1,12 @@
-snippet prov "goog.provide" b
+snippet prov "[closure] goog.provide" b
 goog.provide('${1}');
 endsnippet
 
-snippet req "goog.require" b
+snippet req "[closure] goog.require" b
 goog.require('${1:package_name}');
 endsnippet
 
-snippet fun "static class function" b
+snippet fun "[closure] static class function" b
 /**
  * ${4}
 `!p
@@ -19,17 +19,17 @@ snip.rv = '\n'.join(out)`
 };
 endsnippet
 
-snippet gd "goog.dom" b
+snippet gd "[closure] goog.dom" b
 goog.dom.${0};
 endsnippet
 
-snippet listen "goog.events.listen" b
+snippet listen "[closure] goog.events.listen" b
 goog.events.listen(${1:component}, ${2:event}, function(evt) {
 	${5:// body}
 });
 endsnippet
 
-snippet meth "instance method" b
+snippet meth "[closure] instance method" b
 /**
  * ${4}
 `!p
@@ -42,7 +42,7 @@ snip.rv = '\n'.join(out)`
 };
 endsnippet
 
-snippet const "Constructor" b
+snippet const "[closure] Constructor" b
 /**
  * ${3}
 `!p
@@ -56,7 +56,7 @@ snip.rv = '\n'.join(out)`
 };
 endsnippet
 
-snippet xhr "xhr" b
+snippet xhr "[closure] xhr" b
 goog.net.XhrIo.send(${0:url}, function(evt) {
 	var xhr = evt.target;
 	if (xhr.isSuccess()) {
@@ -67,11 +67,11 @@ goog.net.XhrIo.send(${0:url}, function(evt) {
 });
 endsnippet
 
-snippet log "Emit Log Message" b
+snippet log "[closure] Emit Log Message" b
 `!v substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.LOG.${1:fine}(${2});
 endsnippet
 
-snippet makelog "Create the class logger" b
+snippet makelog "[closure] Create the class logger" b
 /**
  * The class logger
  */
