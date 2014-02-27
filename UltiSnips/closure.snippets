@@ -6,7 +6,7 @@ snippet req "goog.require" b
 goog.require('${1:package_name}');
 endsnippet
 
-snippet func "static class function" b
+snippet fun "static class function" b
 /**
  * ${4}
 `!p
@@ -71,10 +71,6 @@ goog.net.XhrIo.send(${0:url}, function(evt) {
 });
 endsnippet
 
-snippet log "Description" b
-
-endsnippet
-
 snippet log "Emit Log Message" b
 `!v substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.LOG.${1:fine}(${2});
 endsnippet
@@ -84,5 +80,5 @@ snippet makelog "Create the class logger" b
  * The class logger
  */
 `!v substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.LOG = goog.debug.Logger.getLogger(
-	'!v `substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`');
+	'`!v substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`');
 endsnippet
