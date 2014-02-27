@@ -1,5 +1,5 @@
-snippet prov "goog.provides" b
-goog.provides('${1}');
+snippet prov "goog.provide" b
+goog.provide('${1}');
 endsnippet
 
 snippet req "goog.require" b
@@ -9,6 +9,10 @@ endsnippet
 snippet func "static class function" b
 /**
  * ${4}
+`!p
+out = [" * @param {} {{object}} TODO: doc".format(param.strip())
+       for param in t[2].split(',')]
+snip.rv = '\n'.join(out)`
  */
 `!v substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.${1} = function(${2}) {
 	${3}
@@ -31,23 +35,28 @@ endsnippet
 
 snippet meth "instance method" b
 /**
-* ${4}
- `!p
-for i in getArgs(t[2]):
-	snip.rv += "\n\t * @param " + i[1] + " usage..."`
+ * ${4}
+`!p
+out = [" * @param {} {{object}} TODO: doc".format(param.strip())
+       for param in t[2].split(',')]
+snip.rv = '\n'.join(out)`
  */
-`substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.prototype.${1} = function(${2}) {
+`!v substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.prototype.${1} = function(${2}) {
 	${3}
 };
 endsnippet
 
-snippet func "Constructor" b
+snippet const "Constructor" b
 /**
- * ${4}
+ * ${3}
+`!p
+out = [" * @param {} {{object}} TODO: doc".format(param.strip())
+       for param in t[1].split(',')]
+snip.rv = '\n'.join(out)`
  * @constructor
  */
-`substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.${1} = function(${2}) {
-	${3}
+`!v substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")` = function(${1}) {
+	${2}
 };
 endsnippet
 
