@@ -78,3 +78,36 @@ snippet makelog "[closure] Create the class logger" b
 `!v substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.LOG = goog.debug.Logger.getLogger(
 	'`!v substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`');
 endsnippet
+
+
+snippet l1 "[closure] log.finest" b
+`!v substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.LOG.finest(${1});
+endsnippet
+
+snippet l2 "[closure] log.finer" b
+`!v substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.LOG.finer(${1});
+endsnippet
+
+snippet l3 "[closure] log.fine" b
+`!v substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.LOG.fine(${1});
+endsnippet
+
+snippet l4 "[closure] log.config" b
+`!v substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.LOG.config(${1});
+endsnippet
+
+snippet l5 "[closure] log.info" b
+`!v substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.LOG.info(${1});
+endsnippet
+
+snippet l6 "[closure] log.warning" b
+`!v substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.LOG.warning(${1});
+endsnippet
+
+snippet l7 "[closure] log.severe" b
+`!v substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.LOG.severe(${1});
+endsnippet
+
+snippet l8 "[closure] log.shout" b
+`!v substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.LOG.shout(${1});
+endsnippet
