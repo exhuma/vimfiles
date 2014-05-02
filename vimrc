@@ -35,36 +35,29 @@
 
 " Vundle {{{
 filetype off  " See https://github.com/gmarik/vundle/issues/176
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
 
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle 'Jinja'
-Bundle 'NrrwRgn'
-Bundle 'SirVer/ultisnips'
-Bundle 'ctrlp.vim'
-Bundle 'ervandew/supertab'
-Bundle 'gitv'
-Bundle 'gmarik/vundle'
-Bundle 'itchyny/lightline.vim'
-Bundle 'jelera/vim-javascript-syntax'
-Bundle 'klen/python-mode'
-Bundle 'mattn/emmet-vim'
-Bundle 'molokai'
-Bundle 'scrooloose/nerdtree'
-Bundle 'surround.vim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'unimpaired.vim'
-" }}}
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'Jinja'
+Plugin 'NrrwRgn'
+Plugin 'SirVer/ultisnips'
+Plugin 'ctrlp.vim'
+Plugin 'ervandew/supertab'
+Plugin 'gitv'
+Plugin 'gmarik/vundle'
+Plugin 'itchyny/lightline.vim'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'klen/python-mode'
+Plugin 'mattn/emmet-vim'
+Plugin 'molokai'
+Plugin 'scrooloose/nerdtree'
+Plugin 'surround.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'unimpaired.vim'
 
-" Code quality {{{
-set encoding=utf-8
-set autoindent
-set shiftround
-set shiftwidth=4
-set tabstop=4
-set expandtab
+call vundle#end()
 " }}}
 
 " UI style and 'core' behaviour {{{
@@ -164,6 +157,15 @@ set laststatus=2                 " Always show the status bar
 
 " }}} End status line
 
+" }}}
+
+" Code quality {{{
+set encoding=utf-8
+set autoindent
+set shiftround
+set shiftwidth=4
+set tabstop=4
+set expandtab
 " }}}
 
 " Modified behaviour {{{
