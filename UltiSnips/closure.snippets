@@ -56,6 +56,11 @@ goog.events.listen(${1:component}, ${2:event}, function(evt) {
 });
 endsnippet
 
+snippet esym "[closure] goog.exportSymbol" b
+goog.exportSymbol('${1:symbol}',
+	$1);
+endsnippet
+
 snippet xhr "[closure] xhr" b
 goog.net.XhrIo.send(${0:url}, function(evt) {
 	var xhr = evt.target;
