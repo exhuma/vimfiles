@@ -38,22 +38,22 @@ filetype off  " See https://github.com/gmarik/vundle/issues/176
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
 Plugin 'Jinja'
+Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'NrrwRgn'
 Plugin 'SirVer/ultisnips'
 Plugin 'ctrlp.vim'
 Plugin 'ervandew/supertab'
 Plugin 'gitv'
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'klen/python-mode'
 Plugin 'mattn/emmet-vim'
 Plugin 'molokai'
 Plugin 'scrooloose/nerdtree'
-Plugin 'surround.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'tomtom/tlib_vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'unimpaired.vim'
 
