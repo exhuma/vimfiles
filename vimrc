@@ -235,6 +235,7 @@ let g:omni_sql_no_default_maps = 1
 
 " JavaScriptSyntax {{{
 au FileType javascript call JavaScriptFold()
+au FileType closure.javascript call JavaScriptFold()
 " }}}
 
 " UltiSnips {{{
