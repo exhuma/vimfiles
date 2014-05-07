@@ -8,41 +8,41 @@ endsnippet
 
 snippet const "[closure] Constructor" b
 /**
- * ${3}
+ * ${1}
 `!p
-out = [" * @param {} {{object}} TODO: doc".format(param.strip())
-       for param in t[1].split(',')]
+out = [" * @param {{object}} {} TODO: doc".format(param.strip())
+       for param in t[2].split(',')]
 snip.rv = '\n'.join(out)`
  * @constructor
  */
-`!v substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")` = function(${1}) {
-	${2}
+`!v substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")` = function(${2}) {
+	${3}
 };
 endsnippet
 
 snippet fun "[closure] static class function" b
 /**
- * ${4}
+ * ${1}
 `!p
-out = [" * @param {} {{object}} TODO: doc".format(param.strip())
-       for param in t[2].split(',')]
+out = [" * @param {{object}} {} TODO: doc".format(param.strip())
+       for param in t[3].split(',')]
 snip.rv = '\n'.join(out)`
  */
-`!v substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.${1} = function(${2}) {
-	${3}
+`!v substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.${2} = function(${3}) {
+	${4}
 };
 endsnippet
 
 snippet meth "[closure] instance method" b
 /**
- * ${4}
+ * ${1}
 `!p
-out = [" * @param {} {{object}} TODO: doc".format(param.strip())
-       for param in t[2].split(',')]
+out = [" * @param {{object}} {} TODO: doc".format(param.strip())
+       for param in t[3].split(',')]
 snip.rv = '\n'.join(out)`
  */
-`!v substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.prototype.${1} = function(${2}) {
-	${3}
+`!v substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.prototype.${2} = function(${3}) {
+	${4}
 };
 endsnippet
 
@@ -78,7 +78,6 @@ snippet makelog "[closure] Create the class logger" b
 `!v substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.LOG = goog.debug.Logger.getLogger(
 	'`!v substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`');
 endsnippet
-
 
 snippet l1 "[closure] log.finest" b
 `!v substitute(matchstr(getline(search('goog.provide', 'nw')), "'.*'"), "'", "", "g")`.LOG.finest(${1});
