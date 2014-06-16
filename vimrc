@@ -46,15 +46,16 @@ Plugin 'ctrlp.vim'
 Plugin 'ervandew/supertab'
 Plugin 'gitv'
 Plugin 'gmarik/Vundle.vim'
+Plugin 'hdima/python-syntax'
 Plugin 'itchyny/lightline.vim'
 Plugin 'jelera/vim-javascript-syntax'
-Plugin 'klen/python-mode'
 Plugin 'mattn/emmet-vim'
 Plugin 'molokai'
 Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/syntastic'
 Plugin 'tomtom/tlib_vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
 Plugin 'unimpaired.vim'
 
 call vundle#end()
@@ -217,17 +218,6 @@ let NERDTreeIgnore=['\.exe$', '\.tmp$', '\.pyc',
 let NERDTreeWinSize=40
 " }}}
 
-" python-mode {{{
-let pymode_lint_checker="pylint,pyflakes,pep8,mccabe"
-let g:pymode_doc = 0
-let g:pymode_rope_complete_on_dot = 0
-let g:pymode_rope_extended_complete = 1
-let g:pymode_syntax_print_as_function = 1
-let g:pymode_trim_whitespaces = 0
-let g:pymode_virtualenv = 1
-let g:pymode_virtualenv_path = 'env'
-" }}}
-
 " CtrlP {{{
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files']
 " }}}
@@ -271,6 +261,19 @@ let g:lightline = {
 " SuperTab {{{
 let g:SuperTabLongestEnhanced=1
 " }}}
+
+" Syntastic {{{
+let g:syntastic_id_checkers = 1
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_warning_symbol = '⚠'
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_python_python_exe = 'python3'
+" }}}
+
+" python-syntax {{{
+let python_highlight_all = 1
+" }}}
+
 " }}}
 
 " vim: set shiftwidth=4 tabstop=4 expandtab:
