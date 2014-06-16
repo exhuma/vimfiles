@@ -65,8 +65,11 @@ filetype plugin indent on
 syntax on
 colorscheme jellybeans
 set list
-set lcs=tab:├─
-set lcs+=trail:␣
+set listchars=tab:├─
+set listchars+=trail:␣
+set listchars+=extends:→
+set listchars+=precedes:←
+set listchars+=nbsp:◊
 set title
 set foldcolumn=5
 set nowrap
