@@ -46,17 +46,16 @@ Plugin 'ctrlp.vim'
 Plugin 'ervandew/supertab'
 Plugin 'gitv'
 Plugin 'gmarik/Vundle.vim'
-Plugin 'hdima/python-syntax'
 Plugin 'itchyny/lightline.vim'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'mattn/emmet-vim'
 Plugin 'molokai'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
 Plugin 'tomtom/tlib_vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'unimpaired.vim'
+Plugin 'klen/python-mode'
 
 call vundle#end()
 " }}}
@@ -272,6 +271,11 @@ let g:syntastic_python_python_exe = 'python3'
 
 " python-syntax {{{
 let python_highlight_all = 1
+" }}}
+
+" python-mode {{{
+let g:pymode_folding = 1
+let g:pymode_rope_complete_on_dot = 0
 " }}}
 
 " }}}
