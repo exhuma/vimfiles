@@ -48,6 +48,7 @@ Plugin 'gitv'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'jelera/vim-javascript-syntax'
+Plugin 'klen/python-mode'
 Plugin 'mattn/emmet-vim'
 Plugin 'molokai'
 Plugin 'scrooloose/nerdtree'
@@ -55,7 +56,6 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'unimpaired.vim'
-Plugin 'klen/python-mode'
 
 call vundle#end()
 " }}}
