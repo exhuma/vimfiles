@@ -206,6 +206,9 @@ inoremap jj <Esc>
 nnoremap <leader><space> :noh<CR>
 nmap <space> <leader>
 
+nmap <F4> a<C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR><ESC>
+imap <F4> <C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>
+
 " Fix to make <C-PageUp/Down> work in tmux
 nnoremap [5^ :tabprev<CR>
 nnoremap [6^ :tabnext<CR>
