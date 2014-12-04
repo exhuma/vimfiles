@@ -9,3 +9,31 @@ endsnippet
 snippet pdb "inline debugger" b
 from pdb import set_trace; set_trace()  # XXX debugger
 endsnippet
+
+snippet setup "Simple Setup" b
+from setuptools import setup, find_packages
+from pkg_resources import resource_string
+setup(
+	name="${1:name}",
+	version=resource_string('$1', 'version.txt').strip(),
+	packages=find_packages(),
+	install_requires=[
+		'${2:config_resolver}',
+	],
+	include_package_data=True,
+	author="${3:Michel Albert}",
+	author_email="${4:jdoe@example.com}",
+	description="${5:Description}",
+	license="${6:BSD}",
+	url="${7:https://github.com/exhuma}",
+)
+endsnippet
+
+snippet __init "no-arg initialiser" b
+def __init__(self):
+	
+endsnippet
+
+snippet logger "module logger" b
+LOG = logging.getLogger(__name__)
+endsnippet
