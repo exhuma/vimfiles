@@ -72,7 +72,6 @@ set listchars+=precedes:←
 set listchars+=nbsp:◊
 set title
 set foldcolumn=5
-set nowrap
 set background=dark
 set t_Co=256
 set cmdheight=2
@@ -92,6 +91,15 @@ set showmatch
 set ruler
 set showcmd
 set timeout timeoutlen=1000 ttimeoutlen=100
+
+if has("patch-7.4.338")
+    set wrap
+    set breakindent
+    set breakindentopt=sbr
+    set showbreak=>
+else
+    set nowrap
+endif
 
 if has('autocmd')
     autocmd BufReadPost *
@@ -197,6 +205,9 @@ let mapleader=','
 inoremap jj <Esc>
 nnoremap <leader><space> :noh<CR>
 nmap <space> <leader>
+
+nmap <F4> a<C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR><ESC>
+imap <F4> <C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>
 
 " Fix to make <C-PageUp/Down> work in tmux
 nnoremap [5^ :tabprev<CR>
