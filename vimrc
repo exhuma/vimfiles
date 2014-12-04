@@ -205,6 +205,8 @@ endif " }}}
 let mapleader=','
 inoremap jj <Esc>
 nnoremap <leader><space> :noh<CR>
+nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>t :silent !ctags -R .<CR>:redraw!<CR>
 nmap <space> <leader>
 
 nmap <F4> a<C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR><ESC>
