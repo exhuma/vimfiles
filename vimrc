@@ -91,6 +91,7 @@ set showmatch
 set ruler
 set showcmd
 set timeout timeoutlen=1000 ttimeoutlen=100
+set backspace=indent,eol,start
 
 if has("patch-7.4.338")
     set wrap
