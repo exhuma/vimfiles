@@ -32,6 +32,8 @@
 "          :help :filetype
 " ############################################################################
 
+set encoding=utf-8
+scriptencoding utf-8  " The encoding of *this* file
 
 " Vundle {{{
 filetype off  " See https://github.com/gmarik/vundle/issues/176
@@ -172,7 +174,6 @@ set laststatus=2                 " Always show the status bar
 " }}}
 
 " Code quality {{{
-set encoding=utf-8
 set autoindent
 set shiftround
 set shiftwidth=4
