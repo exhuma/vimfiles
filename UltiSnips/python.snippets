@@ -10,6 +10,10 @@ snippet pdb "inline debugger" b
 from pdb import set_trace; set_trace()  # XXX debugger
 endsnippet
 
+snippet ipdb "inline debugger (ipython)" b
+from ipdb import set_trace; set_trace()  # XXX debugger
+endsnippet
+
 snippet setup "Simple Setup" b
 from setuptools import setup, find_packages
 from pkg_resources import resource_string
