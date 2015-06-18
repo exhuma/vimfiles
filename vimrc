@@ -51,6 +51,7 @@ Plugin 'ervandew/supertab'
 Plugin 'gitv'
 Plugin 'itchyny/lightline.vim'
 Plugin 'jelera/vim-javascript-syntax'
+Plugin 'junza/Spink'
 Plugin 'klen/python-mode'
 Plugin 'mattn/emmet-vim'
 Plugin 'molokai'
@@ -66,7 +67,7 @@ call vundle#end()
 " UI style and 'core' behaviour {{{
 filetype plugin indent on
 syntax on
-colorscheme jellybeans
+colorscheme molokai
 set list
 set listchars=tab:├─
 set listchars+=trail:␣
@@ -254,7 +255,7 @@ let g:UltiSnipsNoPythonWarning = 'true'
 
 " LightLine {{{
 let g:lightline = {
-    \ 'colorscheme': 'wombat',
+    \ 'colorscheme': 'molokai',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
