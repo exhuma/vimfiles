@@ -291,6 +291,9 @@ let python_highlight_all = 1
 " python-mode {{{
 let g:pymode_folding = 1
 let g:pymode_rope_complete_on_dot = 0
+
+" {{{ emmet
+let g:user_emmet_leader_key = '<c-y>'
 " }}}
 
 " }}}
