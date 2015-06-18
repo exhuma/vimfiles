@@ -37,7 +37,7 @@ scriptencoding utf-8  " The encoding of *this* file
 
 " Vundle {{{
 filetype off  " See https://github.com/gmarik/vundle/issues/176
-set rtp+=~/.nvim/bundle/Vundle.vim/
+set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin("~/.nvim/bundle")
 
 Plugin 'gmarik/Vundle.vim'
