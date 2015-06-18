@@ -220,6 +220,9 @@ imap <F4> <C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>
 nnoremap [5^ :tabprev<CR>
 nnoremap [6^ :tabnext<CR>
 
+" Abbreviation to instert a timestamp
+iab <expr> dts strftime("%Y-%m-%d %H:%M:%S")
+
 " Look up selected phrase in google
 vnoremap ?? <Esc>:exec
  \ ':!sensible-browser http://www.google.com/search?q="'
