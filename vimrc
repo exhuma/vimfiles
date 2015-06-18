@@ -126,6 +126,9 @@ if v:version >= 703
    hi link ColorColumn CursorLine
 endif
 
+" Custom colour for matching parentheses.
+hi MatchParen term=reverse cterm=bold ctermbg=238 ctermfg=220
+
 " Status line {{{
 
 "Add the variable with the name a:varName to the statusline. Highlight it as {{{
