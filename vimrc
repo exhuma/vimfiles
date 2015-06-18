@@ -297,9 +297,15 @@ let python_highlight_all = 1
 " }}}
 
 " python-mode {{{
+let g:pymode_doc = 0
 let g:pymode_folding = 1
 let g:pymode_rope = 0
 let g:pymode_rope_complete_on_dot = 0
+let g:pymode_rope_extended_complete = 1
+let g:pymode_syntax_print_as_function = 1
+let g:pymode_virtualenv = 1
+let g:pymode_virtualenv_path = 'env'
+let pymode_lint_checker="pylint,pyflakes,pep8,mccabe"
 " }}}
 
 " {{{ emmet
