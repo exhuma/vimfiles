@@ -37,8 +37,10 @@ scriptencoding utf-8  " The encoding of *this* file
 
 " Vundle {{{
 filetype off  " See https://github.com/gmarik/vundle/issues/176
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#begin()
+set rtp+=~/.nvim/bundle/Vundle.vim/
+call vundle#begin("~/.nvim/bundle")
+
+Plugin 'gmarik/Vundle.vim'
 
 Plugin 'Jinja'
 Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -47,7 +49,6 @@ Plugin 'SirVer/ultisnips'
 Plugin 'ctrlp.vim'
 Plugin 'ervandew/supertab'
 Plugin 'gitv'
-Plugin 'gmarik/Vundle.vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'klen/python-mode'
