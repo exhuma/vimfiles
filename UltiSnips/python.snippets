@@ -36,9 +36,9 @@ endsnippet
 snippet _i "Simple __init__" b
 def __init__(self, ${1}):
 `!p
-out = ["        self.{0} = {0}".format(param.strip())
+out = ["self.{0} = {0}".format(param.strip())
        for param in t[1].split(',') if not param.startswith('*')]
-snip.rv = '\n'.join(out)`
+snip.rv = '    ' + '\n        '.join(out)`
 	${2}
 endsnippet
 
