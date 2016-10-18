@@ -6,6 +6,10 @@ snippet dp "Debug Print" b
 print(${1})  # XXX debug statement
 endsnippet
 
+snippet rp "Repr Print" b
+print(repr(${1}))  # XXX debug statement
+endsnippet
+
 snippet pdb "inline debugger" b
 from pdb import set_trace; set_trace()  # XXX debugger
 endsnippet
@@ -65,4 +69,23 @@ endsnippet
 
 snippet __ "dunder"
 __${1}__
+endsnippet
+
+
+snippet ut "unittest" b
+import unittest
+
+
+class Test${1}(${2:unittest.TestCase}):
+
+	def test_${3}(self):
+		${4}
+endsnippet
+
+snippet skip "skipTest(TODO)" b
+self.skipTest('TODO')  # XXX
+endsnippet
+
+snippet fail "fail('TODO')" b
+self.fail('TODO')  # XXX
 endsnippet
