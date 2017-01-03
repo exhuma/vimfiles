@@ -214,6 +214,8 @@ inoremap jj <Esc>
 nnoremap <leader><space> :noh<CR>
 nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>t :silent !ctags -R .<CR>:redraw!<CR>
+nnoremap <leader>l :PymodeLint<CR>
+nnoremap <leader>d ddp/=======$<CR>jdd<C-o>P
 nmap <space> <leader>
 
 nmap <F4> a<C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR><ESC>
