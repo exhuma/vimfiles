@@ -98,6 +98,7 @@ set showcmd
 set timeout timeoutlen=1000 ttimeoutlen=100
 set backspace=indent,eol,start
 set visualbell t_vb=
+set tags=./tags;
 
 if has("patch-7.4.338")
     set wrap
