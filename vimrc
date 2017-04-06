@@ -182,10 +182,11 @@ set laststatus=2                 " Always show the status bar
 
 " Code quality {{{
 set autoindent
+set expandtab
 set shiftround
 set shiftwidth=4
 set tabstop=4
-set expandtab
+set textwidth=79
 " }}}
 
 " Modified behaviour {{{
