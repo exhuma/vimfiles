@@ -55,6 +55,7 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'klen/python-mode'
 Plugin 'mattn/emmet-vim'
 Plugin 'molokai'
+Plugin 'posva/vim-vue'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tomtom/tlib_vim'
 Plugin 'tpope/vim-fugitive'
@@ -99,12 +100,13 @@ set timeout timeoutlen=1000 ttimeoutlen=100
 set backspace=indent,eol,start
 set visualbell t_vb=
 set tags=./tags;
+set cpoptions+=n
 
 if has("patch-7.4.338")
     set wrap
     set breakindent
     set breakindentopt=sbr
-    set showbreak=>
+    let &showbreak = '+++ '
 else
     set nowrap
 endif
@@ -236,6 +238,11 @@ vnoremap ?? <Esc>:exec
  \ ':!sensible-browser http://www.google.com/search?q="'
  \ . substitute(@*,'\W\+\\|\<\w\>'," ","g")
  \ . '"'<CR><CR>
+
+" Show highlight group under cursor
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 " }}}
 
 " Plugins {{{
