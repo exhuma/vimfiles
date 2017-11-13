@@ -235,6 +235,11 @@ vnoremap ?? <Esc>:exec
  \ ':!sensible-browser http://www.google.com/search?q="'
  \ . substitute(@*,'\W\+\\|\<\w\>'," ","g")
  \ . '"'<CR><CR>
+
+" Show highlight group under cursor
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 " }}}
 
 " Plugins {{{
