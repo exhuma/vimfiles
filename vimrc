@@ -98,12 +98,13 @@ set showcmd
 set timeout timeoutlen=1000 ttimeoutlen=100
 set backspace=indent,eol,start
 set visualbell t_vb=
+set cpoptions+=n
 
 if has("patch-7.4.338")
     set wrap
     set breakindent
     set breakindentopt=sbr
-    set showbreak=>
+    let &showbreak = '+++ '
 else
     set nowrap
 endif
