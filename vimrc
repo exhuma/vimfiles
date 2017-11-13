@@ -49,6 +49,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'Yggdroot/indentLine'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'ervandew/supertab'
+Plugin 'fisadev/vim-isort'
 Plugin 'gitv'
 Plugin 'itchyny/lightline.vim'
 Plugin 'jelera/vim-javascript-syntax'
@@ -243,6 +244,9 @@ vnoremap ?? <Esc>:exec
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+" Run iSort
+nnoremap <C-i> :Isort<CR>
 " }}}
 
 " Plugins {{{
@@ -326,6 +330,10 @@ let pymode_lint_checker="pylint,pyflakes,pep8,mccabe"
 " {{{ emmet
 let g:user_emmet_leader_key = '<c-y>'
 
+" }}}
+
+" {{{ isort
+let g:vim_isort_python_version = 'python3'
 " }}}
 
 " vim: set shiftwidth=4 tabstop=4 expandtab:
