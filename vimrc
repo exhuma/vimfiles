@@ -247,6 +247,18 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 
 " Run iSort
 nnoremap <C-i> :Isort<CR>
+
+
+" Helper to easily toggle "conceal" on or off
+function! ToggleConceal()
+    if &conceallevel == 2
+        set conceallevel=0
+    else
+        set conceallevel=2
+    endif
+endfunction
+map <leader>c :call ToggleConceal()<CR>
+
 " }}}
 
 " Plugins {{{
