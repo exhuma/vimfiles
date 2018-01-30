@@ -69,7 +69,6 @@ call vundle#end()
 " UI style and 'core' behaviour {{{
 filetype plugin indent on
 syntax on
-colorscheme molokai
 set list
 set listchars=tab:├─
 set listchars+=trail:␣
@@ -124,6 +123,7 @@ if v:version >= 700
     set cursorline
 endif
 
+colorscheme molokai
 if v:version >= 703
    " Highlight the column where the text should wrap
    set colorcolumn=+1
