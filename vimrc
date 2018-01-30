@@ -105,8 +105,8 @@ set cpoptions+=n
 if has("patch-7.4.338")
     set wrap
     set breakindent
-    set breakindentopt=sbr
-    let &showbreak = '+++ '
+    set breakindentopt=shift:3
+    let &showbreak = ' … '
 else
     set nowrap
 endif
@@ -133,6 +133,9 @@ endif
 
 " Custom colour for matching parentheses.
 hi MatchParen term=reverse cterm=bold ctermbg=238 ctermfg=220
+
+" Make NonText a bit more visible
+hi NonText ctermbg=058 ctermfg=015
 
 " Status line {{{
 
