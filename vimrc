@@ -69,7 +69,6 @@ call vundle#end()
 " UI style and 'core' behaviour {{{
 filetype plugin indent on
 syntax on
-colorscheme molokai
 set list
 set listchars=tab:├─
 set listchars+=trail:␣
@@ -106,8 +105,8 @@ set cpoptions+=n
 if has("patch-7.4.338")
     set wrap
     set breakindent
-    set breakindentopt=sbr
-    let &showbreak = '+++ '
+    set breakindentopt=shift:3
+    let &showbreak = ' … '
 else
     set nowrap
 endif
@@ -124,6 +123,7 @@ if v:version >= 700
     set cursorline
 endif
 
+colorscheme molokai
 if v:version >= 703
    " Highlight the column where the text should wrap
    set colorcolumn=+1
@@ -133,6 +133,9 @@ endif
 
 " Custom colour for matching parentheses.
 hi MatchParen term=reverse cterm=bold ctermbg=238 ctermfg=220
+
+" Make NonText a bit more visible
+hi NonText ctermbg=058 ctermfg=015
 
 " Status line {{{
 
@@ -247,6 +250,18 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 
 " Run iSort
 nnoremap <C-i> :Isort<CR>
+
+
+" Helper to easily toggle "conceal" on or off
+function! ToggleConceal()
+    if &conceallevel == 2
+        set conceallevel=0
+    else
+        set conceallevel=2
+    endif
+endfunction
+map <leader>c :call ToggleConceal()<CR>
+
 " }}}
 
 " Plugins {{{
@@ -284,8 +299,8 @@ let g:lightline = {
     \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
     \ },
     \ 'component': {
-    \   'readonly': '%{&readonly?"⭤":""}',
-    \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+    \   'readonly': '%{&readonly?"":""}',
+    \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
     \ },
     \ 'component_visible_condition': {
     \   'readonly': '(&filetype!="help"&& &readonly)',
