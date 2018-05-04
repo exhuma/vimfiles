@@ -38,7 +38,7 @@ scriptencoding utf-8  " The encoding of *this* file
 " Vundle {{{
 filetype off  " See https://github.com/gmarik/vundle/issues/176
 set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#begin("~/.nvim/bundle")
+call vundle#begin("~/.vim/bundle")
 
 Plugin 'gmarik/Vundle.vim'
 
@@ -49,6 +49,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'Yggdroot/indentLine'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'ervandew/supertab'
+Plugin 'fisadev/vim-isort'
 Plugin 'gitv'
 Plugin 'itchyny/lightline.vim'
 Plugin 'jelera/vim-javascript-syntax'
@@ -68,7 +69,6 @@ call vundle#end()
 " UI style and 'core' behaviour {{{
 filetype plugin indent on
 syntax on
-colorscheme molokai
 set list
 set listchars=tab:├─
 set listchars+=trail:␣
@@ -84,6 +84,7 @@ set scrolloff=7
 set wildmenu
 set wildignore=*.lnk,*~,*.bak,*.pyc
 set wildignore+=*/.hg/*,*/.svn/*
+set wildignore+=env/*,*.egg-info/*,*/__pycache__/*,doc/_build/*
 set wildmode=longest:full,full
 set viminfo=%,'50,<100,n~/.viminfo
 set pastetoggle=<F3>
@@ -98,13 +99,14 @@ set showcmd
 set timeout timeoutlen=1000 ttimeoutlen=100
 set backspace=indent,eol,start
 set visualbell t_vb=
+set tags=./tags;
 set cpoptions+=n
 
 if has("patch-7.4.338")
     set wrap
     set breakindent
-    set breakindentopt=sbr
-    let &showbreak = '+++ '
+    set breakindentopt=shift:3
+    let &showbreak = ' … '
 else
     set nowrap
 endif
@@ -121,6 +123,7 @@ if v:version >= 700
     set cursorline
 endif
 
+colorscheme molokai
 if v:version >= 703
    " Highlight the column where the text should wrap
    set colorcolumn=+1
@@ -130,6 +133,9 @@ endif
 
 " Custom colour for matching parentheses.
 hi MatchParen term=reverse cterm=bold ctermbg=238 ctermfg=220
+
+" Make NonText a bit more visible
+hi NonText ctermbg=058 ctermfg=015
 
 " Status line {{{
 
@@ -183,10 +189,11 @@ set laststatus=2                 " Always show the status bar
 
 " Code quality {{{
 set autoindent
+set expandtab
 set shiftround
 set shiftwidth=4
 set tabstop=4
-set expandtab
+set textwidth=79
 " }}}
 
 " Modified behaviour {{{
@@ -239,6 +246,21 @@ vnoremap ?? <Esc>:exec
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+" Run iSort
+nnoremap <C-i> :Isort<CR>
+
+
+" Helper to easily toggle "conceal" on or off
+function! ToggleConceal()
+    if &conceallevel == 2
+        set conceallevel=0
+    else
+        set conceallevel=2
+    endif
+endfunction
+map <leader>c :call ToggleConceal()<CR>
+
 " }}}
 
 " Plugins {{{
@@ -276,8 +298,8 @@ let g:lightline = {
     \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
     \ },
     \ 'component': {
-    \   'readonly': '%{&readonly?"⭤":""}',
-    \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+    \   'readonly': '%{&readonly?"":""}',
+    \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
     \ },
     \ 'component_visible_condition': {
     \   'readonly': '(&filetype!="help"&& &readonly)',
@@ -321,6 +343,10 @@ let g:pymode_virtualenv_path = 'env'
 " {{{ emmet
 let g:user_emmet_leader_key = '<c-y>'
 
+" }}}
+
+" {{{ isort
+let g:vim_isort_python_version = 'python3'
 " }}}
 
 " vim: set shiftwidth=4 tabstop=4 expandtab:
