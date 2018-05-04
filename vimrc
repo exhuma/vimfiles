@@ -223,6 +223,8 @@ nmap <space> <leader>
 nmap <F4> a<C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR><ESC>
 imap <F4> <C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>
 
+" Behave somewhat like 'less' for toggling word-wrap
+nnoremap -S :set nowrap!<CR>
 
 " Abbreviation to instert a timestamp
 iab <expr> dts strftime("%Y-%m-%d %H:%M:%S")
