@@ -48,20 +48,22 @@ Plugin 'NrrwRgn'
 Plugin 'SirVer/ultisnips'
 Plugin 'Yggdroot/indentLine'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'ervandew/supertab'
-Plugin 'fisadev/vim-isort'
 Plugin 'gitv'
 Plugin 'itchyny/lightline.vim'
 Plugin 'jelera/vim-javascript-syntax'
-Plugin 'klen/python-mode'
 Plugin 'mattn/emmet-vim'
 Plugin 'molokai'
 Plugin 'posva/vim-vue'
+Plugin 'romainl/Apprentice'
+Plugin 'ryanoasis/vim-devicons'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tomtom/tlib_vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'unimpaired.vim'
+Plugin 'w0rp/ale'
 
 call vundle#end()
 " }}}
@@ -123,7 +125,7 @@ if v:version >= 700
     set cursorline
 endif
 
-colorscheme molokai
+colorscheme apprentice
 if v:version >= 703
    " Highlight the column where the text should wrap
    set colorcolumn=+1
@@ -247,8 +249,8 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-" Run iSort
-nnoremap <C-i> :Isort<CR>
+" Run ALEFix
+nnoremap <C-i> :ALEFix<CR>
 
 
 " Helper to easily toggle "conceal" on or off
@@ -264,6 +266,23 @@ map <leader>c :call ToggleConceal()<CR>
 " }}}
 
 " Plugins {{{
+
+" ALE {{{
+let g:ale_fixers = {
+\   'python': ['isort'],
+\}
+let g:ale_linters = {
+\   'python': ['mypy', 'pylint'],
+\}
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_format = '[%severity%] [%linter%: %code%] %s'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_open_list = 1
+let g:ale_python_mypy_options = '--ignore-missing-imports'
+let g:ale_python_mypy_options = '--ignore-missing-imports'
+let g:ale_sign_error = ''
+let g:ale_sign_warning = ''
+" }}}
 
 " NERDTree {{{
 let NERDTreeIgnore=['\.exe$', '\.tmp$', '\.pyc',
@@ -315,29 +334,8 @@ let g:lightline = {
 let g:SuperTabLongestEnhanced=1
 " }}}
 
-" Syntastic {{{
-let g:syntastic_id_checkers = 1
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_warning_symbol = '⚠'
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_python_python_exe = 'python3'
-" }}}
-
 " python-syntax {{{
 let python_highlight_all = 1
-" }}}
-
-" python-mode {{{
-let g:pymode_doc = 0
-let g:pymode_folding = 1
-let g:pymode_lint_checkers = ['pylint', 'pyflakes', 'pep8', 'mccabe']
-let g:pymode_python = 'python3'
-let g:pymode_rope = 0
-let g:pymode_rope_complete_on_dot = 0
-let g:pymode_rope_extended_complete = 1
-let g:pymode_syntax_print_as_function = 1
-let g:pymode_virtualenv = 1
-let g:pymode_virtualenv_path = 'env'
 " }}}
 
 " {{{ emmet
@@ -345,8 +343,13 @@ let g:user_emmet_leader_key = '<c-y>'
 
 " }}}
 
-" {{{ isort
-let g:vim_isort_python_version = 'python3'
+" {{{ vim-devicons
+autocmd FileType nerdtree setlocal nolist
+" }}}
+
+" {{{ vim-devicons
+let g:table_mode_corner_corner='+'
+let g:table_mode_header_fillchar='='
 " }}}
 
 " vim: set shiftwidth=4 tabstop=4 expandtab:
