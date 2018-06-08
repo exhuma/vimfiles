@@ -56,6 +56,7 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'mattn/emmet-vim'
 Plugin 'molokai'
 Plugin 'posva/vim-vue'
+Plugin 'romainl/Apprentice'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tomtom/tlib_vim'
 Plugin 'tpope/vim-fugitive'
@@ -123,7 +124,7 @@ if v:version >= 700
     set cursorline
 endif
 
-colorscheme molokai
+colorscheme apprentice
 if v:version >= 703
    " Highlight the column where the text should wrap
    set colorcolumn=+1
