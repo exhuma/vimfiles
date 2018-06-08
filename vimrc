@@ -57,6 +57,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'molokai'
 Plugin 'posva/vim-vue'
 Plugin 'romainl/Apprentice'
+Plugin 'ryanoasis/vim-devicons'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tomtom/tlib_vim'
 Plugin 'tpope/vim-fugitive'
@@ -342,6 +343,13 @@ let g:user_emmet_leader_key = '<c-y>'
 
 " }}}
 
+" {{{ vim-devicons
+autocmd FileType nerdtree setlocal nolist
+" }}}
+
+" {{{ vim-devicons
+let g:table_mode_corner_corner='+'
+let g:table_mode_header_fillchar='='
 " }}}
 
 " vim: set shiftwidth=4 tabstop=4 expandtab:
