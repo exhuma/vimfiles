@@ -278,8 +278,7 @@ let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_format = '[%severity%] [%linter%: %code%] %s'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_open_list = 1
-let g:ale_python_mypy_options = '--ignore-missing-imports'
-let g:ale_python_mypy_options = '--ignore-missing-imports'
+let g:ale_python_mypy_options = '--strict --ignore-missing-imports'
 let g:ale_sign_error = ''
 let g:ale_sign_warning = ''
 " }}}
