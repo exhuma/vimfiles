@@ -48,7 +48,6 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'NrrwRgn'
 Plugin 'SirVer/ultisnips'
 Plugin 'Yggdroot/indentLine'
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'ervandew/supertab'
 Plugin 'gitv'
@@ -72,6 +71,9 @@ Plugin 'w0rp/ale'
 
 call vundle#end()
 " }}}
+
+" Add fzf to runtime path
+set rtp+=~/.local/src/fzf
 
 " UI style and 'core' behaviour {{{
 filetype plugin indent on
@@ -298,8 +300,8 @@ let NERDTreeIgnore=['\.exe$', '\.tmp$', '\.pyc',
 let NERDTreeWinSize=40
 " }}}
 
-" CtrlP {{{
-let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files']
+" FZF {{{
+nnoremap <C-p> :FZF<CR>
 " }}}
 
 " SQL {{{
