@@ -43,6 +43,7 @@ call vundle#begin("~/.vim/bundle")
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'Jinja'
+Plugin 'Konfekt/FastFold'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'NrrwRgn'
 Plugin 'SirVer/ultisnips'
@@ -56,9 +57,11 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'mattn/emmet-vim'
 Plugin 'molokai'
 Plugin 'posva/vim-vue'
+Plugin 'robbles/logstash.vim'
 Plugin 'romainl/Apprentice'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'scrooloose/nerdtree'
+Plugin 'tmhedberg/SimpylFold'
 Plugin 'tomtom/tlib_vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
@@ -274,12 +277,15 @@ let g:ale_fixers = {
 let g:ale_linters = {
 \   'python': ['mypy', 'pylint'],
 \}
+" Don't lint test files
+let g:ale_pattern_options = {
+\   'tests\/': {'ale_linters': ['pylint'], 'ale_fixers': ['isort']},
+\}
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_format = '[%severity%] [%linter%: %code%] %s'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_open_list = 1
-let g:ale_python_mypy_options = '--ignore-missing-imports'
-let g:ale_python_mypy_options = '--ignore-missing-imports'
+let g:ale_python_mypy_options = '--ignore-missing-imports --strict'
 let g:ale_sign_error = ''
 let g:ale_sign_warning = ''
 " }}}
