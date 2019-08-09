@@ -43,11 +43,11 @@ call vundle#begin("~/.vim/bundle")
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'Jinja'
+Plugin 'Konfekt/FastFold'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'NrrwRgn'
 Plugin 'SirVer/ultisnips'
 Plugin 'Yggdroot/indentLine'
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'ervandew/supertab'
 Plugin 'gitv'
@@ -56,9 +56,13 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'mattn/emmet-vim'
 Plugin 'molokai'
 Plugin 'posva/vim-vue'
+Plugin 'robbles/logstash.vim'
 Plugin 'romainl/Apprentice'
+Plugin 'roxma/nvim-yarp'
+Plugin 'roxma/vim-hug-neovim-rpc'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'scrooloose/nerdtree'
+Plugin 'tmhedberg/SimpylFold'
 Plugin 'tomtom/tlib_vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
@@ -67,6 +71,9 @@ Plugin 'w0rp/ale'
 
 call vundle#end()
 " }}}
+
+" Add fzf to runtime path
+set rtp+=~/.local/src/fzf
 
 " UI style and 'core' behaviour {{{
 filetype plugin indent on
@@ -276,16 +283,20 @@ map <leader>c :call ToggleConceal()<CR>
 
 " ALE {{{
 let g:ale_fixers = {
-\   'python': ['isort'],
+\   'python': ['isort', 'autopep8'],
 \}
 let g:ale_linters = {
 \   'python': ['mypy', 'pylint'],
+\}
+" Don't lint test files
+let g:ale_pattern_options = {
+\   'tests\/': {'ale_linters': ['pylint'], 'ale_fixers': ['isort', 'autopep8']},
 \}
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_format = '[%severity%] [%linter%: %code%] %s'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_open_list = 1
-let g:ale_python_mypy_options = '--strict --ignore-missing-imports'
+let g:ale_python_mypy_options = '--strict'
 let g:ale_sign_error = ''
 let g:ale_sign_warning = ''
 " }}}
@@ -301,8 +312,8 @@ let NERDTreeIgnore=[
 let NERDTreeWinSize=40
 " }}}
 
-" CtrlP {{{
-let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files']
+" FZF {{{
+nnoremap <C-p> :FZF<CR>
 " }}}
 
 " SQL {{{
