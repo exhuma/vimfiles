@@ -7,3 +7,14 @@ snippet dp "Debug Print" b
 console.log(${1}) // XXX debug statement
 endsnippet
 
+
+snippet pw "Promise Wrapper" b
+let output = new Promise((resolve, reject) => {
+	${1}.then(${2} => {
+		${3}
+		}).catch(e => {
+			reject(e)
+		})
+})
+return output
+endsnippet
