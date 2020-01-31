@@ -12,9 +12,9 @@ snippet pw "Promise Wrapper" b
 let output = new Promise((resolve, reject) => {
 	${1}.then(${2} => {
 		${3}
-		}).catch(e => {
+	}).catch(e => {
 			reject(e)
-		})
+	})
 })
 return output
 endsnippet
