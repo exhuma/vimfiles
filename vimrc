@@ -299,6 +299,9 @@ let g:ale_open_list = 1
 let g:ale_python_mypy_options = '--strict'
 let g:ale_sign_error = ''
 let g:ale_sign_warning = ''
+let g:ale_python_mypy_ignore_invalid_syntax = 1
+let g:ale_virtualenv_dir_names = ['.env', '.venv', 'env', 'venv']
+
 " }}}
 
 " NERDTree {{{
