@@ -236,8 +236,12 @@ nnoremap <leader>l :PymodeLint<CR>
 nnoremap <leader>d ddp/=======$<CR>jdd<C-o>P
 nmap <space> <leader>
 
-nmap <F4> a<C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR><ESC>
-imap <F4> <C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>
+nmap <F4> a<C-R>=strftime("%Y-%m-%d")<CR><ESC>
+imap <F4> <C-R>=strftime("%Y-%m-%d")<CR>
+nmap <F5> a<C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR><ESC>
+imap <F5> <C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>
+nmap <F6> a<C-R>=strftime("%Y%m%d")<CR><ESC>
+imap <F6> <C-R>=strftime("%Y%m%d")<CR>
 
 " Behave somewhat like 'less' for toggling word-wrap
 nnoremap -S :set nowrap!<CR>
