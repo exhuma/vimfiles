@@ -296,6 +296,9 @@ let g:ale_open_list = 1
 let g:ale_python_mypy_options = '--strict'
 let g:ale_sign_error = ''
 let g:ale_sign_warning = ''
+if &diff
+    let g:ale_enabled = 0
+endif
 " }}}
 
 " NERDTree {{{
