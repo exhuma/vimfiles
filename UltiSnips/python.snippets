@@ -1,13 +1,13 @@
 snippet pp "Pretty Print" b
-from pprint import pformat; print('[debug-print-`cat /dev/urandom | hexdump | head -n 1 | cut -d ' ' -f 2`]', pformat(${1}))  # XXX debug statement
+from pprint import pformat; print('\u001b[30;43m[debug-print-`cat /dev/urandom | hexdump | head -n 1 | cut -d ' ' -f 2`]\u001b[0m\n%s' % pformat(${1}))  # XXX debug statement
 endsnippet
 
 snippet dp "Debug Print" b
-print('[debug-print-`cat /dev/urandom | hexdump | head -n 1 | cut -d ' ' -f 2`]', ${1})  # XXX debug statement
+print('\u001b[30;43m[debug-print-`cat /dev/urandom | hexdump | head -n 1 | cut -d ' ' -f 2`]\u001b[0m', ${1})  # XXX debug statement
 endsnippet
 
 snippet rp "Repr Print" b
-print('[debug-print-`cat /dev/urandom | hexdump | head -n 1 | cut -d ' ' -f 2`]', repr(${1}))  # XXX debug statement
+print('\u001b[30;43m[debug-print-`cat /dev/urandom | hexdump | head -n 1 | cut -d ' ' -f 2`]\u001b[0m', repr(${1}))  # XXX debug statement
 endsnippet
 
 snippet pdb "inline debugger" b
@@ -90,4 +90,9 @@ endsnippet
 
 snippet fail "fail('TODO')" b
 self.fail('TODO')  # XXX
+endsnippet
+
+
+snippet rt "Reveal Type" b
+reveal_type(${1})
 endsnippet

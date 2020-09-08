@@ -91,9 +91,16 @@ set t_Co=256
 set cmdheight=2
 set scrolloff=7
 set wildmenu
-set wildignore=*.lnk,*~,*.bak,*.pyc
-set wildignore+=*/.hg/*,*/.svn/*
-set wildignore+=env/*,*.egg-info/*,*/__pycache__/*,doc/_build/*
+set wildignore=*.lnk
+set wildignore+=*~
+set wildignore+=*.bak
+set wildignore+=*.pyc
+set wildignore+=*/.hg/*
+set wildignore+=*/.svn/*
+set wildignore+=*/env/*
+set wildignore+=*.egg-info/*
+set wildignore+=*/__pycache__/*
+set wildignore+=doc/_build/*
 set wildmode=longest:full,full
 set viminfo=%,'50,<100,n~/.viminfo
 set pastetoggle=<F3>
@@ -296,14 +303,21 @@ let g:ale_open_list = 1
 let g:ale_python_mypy_options = '--strict'
 let g:ale_sign_error = ''
 let g:ale_sign_warning = ''
+let g:ale_python_mypy_ignore_invalid_syntax = 1
+let g:ale_virtualenv_dir_names = ['.env', '.venv', 'env', 'venv']
 if &diff
     let g:ale_enabled = 0
 endif
 " }}}
 
 " NERDTree {{{
-let NERDTreeIgnore=['\.exe$', '\.tmp$', '\.pyc',
-    \ '\.sfv$', '\~$' ]
+let NERDTreeIgnore=[
+    \ '^__pycache__$',
+    \ '\.exe$',
+    \ '\.tmp$',
+    \ '\.pyc',
+    \ '\.sfv$',
+    \ '\~$' ]
 let NERDTreeWinSize=40
 " }}}
 

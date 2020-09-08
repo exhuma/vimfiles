@@ -1,0 +1,28 @@
+extends javascript
+extends html
+
+snippet comp "Vue Component" b
+<template>
+	<${2:div}>
+	${0}
+	</$2>
+</template>
+
+<script>
+export default {
+	name: '$1',
+};
+</script>
+endsnippet
+
+snippet data "Vue Data Block" b
+data: () => ({
+	${1}: ${2}
+}),
+endsnippet
+
+snippet meth "Method" b
+${1}: function (${2}) {
+	${0}
+}
+endsnippet
