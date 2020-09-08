@@ -280,14 +280,14 @@ map <leader>c :call ToggleConceal()<CR>
 
 " ALE {{{
 let g:ale_fixers = {
-\   'python': ['isort', 'autopep8'],
+\   'python': ['isort', 'black'],
 \}
 let g:ale_linters = {
 \   'python': ['mypy', 'pylint'],
 \}
 " Don't lint test files
 let g:ale_pattern_options = {
-\   'tests\/': {'ale_linters': ['pylint'], 'ale_fixers': ['isort', 'autopep8']},
+\   'tests\/': {'ale_linters': ['pylint'], 'ale_fixers': ['isort', 'black']},
 \}
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_format = '[%severity%] [%linter%: %code%] %s'
