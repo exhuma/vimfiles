@@ -140,7 +140,8 @@ if v:version >= 700
     set cursorline
 endif
 
-colorscheme apprentice
+silent! colorscheme apprentice
+
 if v:version >= 703
    " Highlight the column where the text should wrap
    set colorcolumn=+1
