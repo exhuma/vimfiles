@@ -54,6 +54,7 @@ Plugin 'ervandew/supertab'
 Plugin 'gitv'
 Plugin 'itchyny/lightline.vim'
 Plugin 'jelera/vim-javascript-syntax'
+Plugin 'junegunn/fzf.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'molokai'
 Plugin 'posva/vim-vue'
@@ -74,7 +75,7 @@ call vundle#end()
 " }}}
 
 " Add fzf to runtime path
-set rtp+=~/.local/src/fzf
+set rtp+=~/.fzf
 
 " UI style and 'core' behaviour {{{
 filetype plugin indent on
@@ -324,7 +325,7 @@ let NERDTreeWinSize=40
 " }}}
 
 " FZF {{{
-nnoremap <C-p> :FZF<CR>
+nnoremap <C-p> :Files<CR>
 " }}}
 
 " SQL {{{
